@@ -53,6 +53,16 @@ Trọng tâm: Xây dựng trải nghiệm thiệp cưới động hoàn chỉnh 
 - 3. Vòng tròn lịch khoanh đúng ngày cưới nhà trai/nhà gái.
 - 4. Confetti xuất hiện khi submit form thành công.
 
+### Phase 04.1: Hoàn thiện bố cục Content và Media (INSERTED)
+
+**Goal:** [Urgent work - to be planned]
+**Requirements**: TBD
+**Depends on:** Phase 4
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 04.1 to break down)
+
 ### Phase 5: TỐI ƯU HÓA TRẢI NGHIỆM DI ĐỘNG & HIỆU NĂNG
 **Goal:** Áp dụng tối ưu tài nguyên (hình ảnh, responsive canvas) để đáp ứng Webview Zalo/FB.
 
