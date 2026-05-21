@@ -38,7 +38,9 @@ export default function Gallery3D() {
   return (
     <Canvas camera={{ position: [0, 0, 10], fov: 40 }}>
       <ambientLight intensity={1} />
-      <Gallery />
+      <React.Suspense fallback={null}>
+        <Gallery />
+      </React.Suspense>
     </Canvas>
   );
 }
