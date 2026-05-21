@@ -7,6 +7,7 @@ import * as THREE from 'three';
 
 function Gallery() {
   const group = useRef();
+  const imgUrl = "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop";
   
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
@@ -20,15 +21,15 @@ function Gallery() {
   return (
     <group ref={group}>
       {/* Center Image */}
-      <DreiImage position={[0, 0, 1.5]} scale={[3, 4]} url="/test-image.jpg" />
+      <DreiImage position={[0, 0, 1.5]} scale={[3, 4]} url={imgUrl} transparent />
       {/* Left Image */}
-      <DreiImage position={[-3.5, 0, 0.5]} rotation={[0, Math.PI / 12, 0]} scale={[3, 4]} url="/test-image.jpg" />
+      <DreiImage position={[-3.5, 0, 0.5]} rotation={[0, Math.PI / 12, 0]} scale={[3, 4]} url={imgUrl} transparent />
       {/* Right Image */}
-      <DreiImage position={[3.5, 0, 0.5]} rotation={[0, -Math.PI / 12, 0]} scale={[3, 4]} url="/test-image.jpg" />
+      <DreiImage position={[3.5, 0, 0.5]} rotation={[0, -Math.PI / 12, 0]} scale={[3, 4]} url={imgUrl} transparent />
       {/* Far Left */}
-      <DreiImage position={[-7, 0, -1]} rotation={[0, Math.PI / 6, 0]} scale={[3, 4]} url="/test-image.jpg" />
+      <DreiImage position={[-7, 0, -1]} rotation={[0, Math.PI / 6, 0]} scale={[3, 4]} url={imgUrl} transparent />
       {/* Far Right */}
-      <DreiImage position={[7, 0, -1]} rotation={[0, -Math.PI / 6, 0]} scale={[3, 4]} url="/test-image.jpg" />
+      <DreiImage position={[7, 0, -1]} rotation={[0, -Math.PI / 6, 0]} scale={[3, 4]} url={imgUrl} transparent />
     </group>
   );
 }
