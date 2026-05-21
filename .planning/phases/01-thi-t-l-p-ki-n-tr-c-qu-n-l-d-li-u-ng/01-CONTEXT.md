@@ -55,7 +55,10 @@ Xây dựng khung dự án Next.js (SSG) và cấu trúc dữ liệu theo URL (n
 <deferred>
 ## Deferred Ideas
 
-None — discussion stayed within phase scope.
+- **Tấm ảnh cưới 3D lật mặt sau chứa Câu Quote (Dùng Three.js):**
+  - Trải nghiệm: Ảnh lơ lửng, khi cuộn đến vùng Album sẽ xoay 3D (trục Y/X). Mặt trước là ảnh cưới, lật ra mặt sau là nền giấy mỹ thuật + câu quote tinh tế.
+  - Hiệu ứng biến dạng (Cloth/Distortion): Tấm ảnh có độ uốn cong mềm mại như dải lụa/giấy bay. Khi cuộn nhanh, ảnh nghiêng nhẹ chịu áp lực "gió".
+  - *Ghi chú:* Đây là một ý tưởng xuất sắc về mặt UX/UI. Tính năng này sẽ được triển khai ở **Phase 3 (Kịch bản chuyển cảnh)** hoặc **Phase 4 (Chi tiết các chương thông tin)**, vì Phase 1 chỉ tập trung xây dựng nền tảng kiến trúc.
 
 </deferred>
 
