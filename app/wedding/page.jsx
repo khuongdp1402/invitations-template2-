@@ -41,7 +41,7 @@ function WeddingContent() {
       <FloatingMusicPlayer />
 
       {/* 1. Hero Section */}
-      <HeroSection name={name} role={role} />
+      <HeroSection name={name} role={role} side={side} />
 
       {/* 2. The Launch Trigger (Ẩn) */}
       <LaunchTrigger />
@@ -52,7 +52,7 @@ function WeddingContent() {
       </div>
 
       {/* 4. Family Section (Nhà Trai - Nhà Gái) */}
-      <FamilySection />
+      <FamilySection side={side} />
 
       {/* 5. Trân Trọng Kính Mời */}
       <InvitationWords />
