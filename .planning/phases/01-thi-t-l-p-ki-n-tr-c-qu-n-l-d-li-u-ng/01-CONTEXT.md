@@ -23,6 +23,11 @@ Xây dựng khung dự án Next.js (SSG) và cấu trúc dữ liệu theo URL (n
 - Các sự kiện được nhóm vào mảng `events`.
 - Phía UI (Giao diện) sẽ tự động có logic sắp xếp lại mảng này (đẩy sự kiện nhà gái lên trước nếu `side=nhagai`, hoặc ngược lại) thay vì chia cắt file dữ liệu.
 
+### Thư viện Animation và Trải nghiệm Tải trang (UX/Loading)
+- **Thư viện chính:** Sử dụng **GSAP (GreenSock) & ScrollTrigger** làm thư viện xử lý chuyển động chính vì khả năng tối ưu hiệu năng xuất sắc trên Mobile và làm storytelling đỉnh cao.
+- **Loading Screen (Splash Screen):** Lợi dụng cơ chế `<Suspense fallback={...}>` của bước trên, `fallback` sẽ chính là một Màn hình Loading thanh lịch (Splash Screen) có thanh phần trăm tải. Tránh hiện tượng web bị giật lag hoặc layout xô lệch khi ảnh/animation chưa tải xong. Giao diện ví dụ: hai người đi bộ lại gần nhau hoặc thiết kế thanh lịch tương đương.
+- **Tối ưu Mobile:** Tuân thủ triệt để hiệu năng cho các trình duyệt web-view (Zalo/Facebook), các hiệu ứng cuộn sẽ được quản lý nghiêm ngặt qua GSAP ScrollTrigger để không làm đơ máy.
+
 ### the agent's Discretion
 - Cấu trúc các file cấu hình Next.js ban đầu (ESLint, Prettier, Tailwind/CSS config).
 - Cách viết logic sorting trong component để tái sử dụng hiệu quả.

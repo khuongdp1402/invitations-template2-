@@ -3,7 +3,9 @@ wave: 1
 depends_on: []
 files_modified:
   - next.config.mjs
+  - package.json
   - app/wedding/page.jsx
+  - components/ui/SplashScreen.jsx
   - config/weddingData.js
 autonomous: true
 ---
@@ -69,13 +71,41 @@ Khởi tạo dự án Next.js (SSG) với App Router và thiết lập cơ chế
 </task>
 
 <task>
-  <description>Xây dựng logic điều hướng hiển thị trong `app/wedding/page.jsx`.</description>
+  <description>Cài đặt thư viện Animation GSAP.</description>
+  <read_first>
+    - package.json
+  </read_first>
+  <action>
+    Chạy lệnh `npm install gsap` để cài đặt thư viện GSAP. Thư viện này sẽ được dùng làm nền tảng chính cho hệ thống animation (bao gồm cả ScrollTrigger ở các phase sau).
+  </action>
+  <acceptance_criteria>
+    - File `package.json` chứa `gsap` trong `dependencies`.
+  </acceptance_criteria>
+</task>
+
+<task>
+  <description>Tạo Component Splash Screen (Loading Screen).</description>
   <read_first>
     - .planning/phases/01-thi-t-l-p-ki-n-tr-c-qu-n-l-d-li-u-ng/01-CONTEXT.md
   </read_first>
   <action>
+    Tạo file `components/ui/SplashScreen.jsx`. Thiết kế một component giao diện full màn hình với thanh phần trăm tải ảo (hoặc spinner thanh lịch) mô phỏng hai người đi bộ lại gần nhau (có thể dùng CSS/SVG đơn giản trước mắt để giữ cấu trúc). Splash Screen này sẽ được làm `fallback` cho trạng thái đang tải trang tĩnh.
+  </action>
+  <acceptance_criteria>
+    - Tồn tại file `components/ui/SplashScreen.jsx`.
+    - Component export default function `SplashScreen`.
+  </acceptance_criteria>
+</task>
+
+<task>
+  <description>Xây dựng logic điều hướng hiển thị trong `app/wedding/page.jsx`.</description>
+  <read_first>
+    - .planning/phases/01-thi-t-l-p-ki-n-tr-c-qu-n-l-d-li-u-ng/01-CONTEXT.md
+    - components/ui/SplashScreen.jsx
+  </read_first>
+  <action>
     1. Tạo thư mục `app/wedding/` và file `page.jsx`.
-    2. Trong `page.jsx`, bọc nội dung component chính (ví dụ `WeddingContent`) bằng thẻ `<Suspense fallback={<div>Loading...</div>}>`.
+    2. Trong `page.jsx`, bọc nội dung component chính (ví dụ `WeddingContent`) bằng thẻ `<Suspense fallback={<SplashScreen />}>`.
     3. `WeddingContent` phải là Client Component (`"use client"`), sử dụng hook `useSearchParams` từ `next/navigation` để lấy các giá trị `side`, `name`, `role`.
     4. Hiển thị thử các giá trị này ra màn hình (ví dụ: in ra HTML tĩnh tên, họ và side) để kiểm chứng.
   </action>
@@ -83,6 +113,7 @@ Khởi tạo dự án Next.js (SSG) với App Router và thiết lập cơ chế
     - Tồn tại file `app/wedding/page.jsx`.
     - Lệnh `grep "useSearchParams" app/wedding/page.jsx` có kết quả.
     - Lệnh `grep "Suspense" app/wedding/page.jsx` có kết quả.
+    - Lệnh `grep "SplashScreen" app/wedding/page.jsx` có kết quả.
   </acceptance_criteria>
 </task>
 ```
