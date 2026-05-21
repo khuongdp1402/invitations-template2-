@@ -13,6 +13,7 @@ import { weddingData } from '@/config/weddingData';
 export default function HeroSection({ name, role, side }) {
   const sectionRef = useRef(null);
   const bgRef = useRef(null);
+  const pathRef = useRef(null);
   
   const currentSide = side === 'nhagai' ? 'nhagai' : 'nhatrai';
   const data = weddingData[currentSide];
@@ -22,9 +23,9 @@ export default function HeroSection({ name, role, side }) {
   const rightName = order[1] === 'groom' ? weddingData.couple.groom.firstName : weddingData.couple.bride.firstName;
 
   useGSAP(() => {
-    // Hiệu ứng Parallax: Ảnh nền trượt chậm hơn so với khi cuộn trang
+    // Parallax effect on the background image
     gsap.to(bgRef.current, {
-      yPercent: 30, // Dịch chuyển ảnh 30% chiều cao của nó
+      yPercent: 20,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -33,45 +34,63 @@ export default function HeroSection({ name, role, side }) {
         scrub: true
       }
     });
+
+    // Handwriting effect
+    if (pathRef.current) {
+      const length = pathRef.current.getTotalLength();
+      gsap.set(pathRef.current, { strokeDasharray: length, strokeDashoffset: length });
+      gsap.to(pathRef.current, {
+        strokeDashoffset: 0,
+        duration: 2,
+        ease: "power2.inOut",
+        delay: 0.5
+      });
+    }
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex items-center justify-center">
-      {/* Lớp nền Parallax */}
-      <div 
-        ref={bgRef} 
-        className="absolute inset-0 w-full h-[130%] -top-[15%] z-0"
-      >
-        <Image 
-          src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1920&auto=format&fit=crop"
-          alt="Wedding Hero"
-          fill
-          className="object-cover"
-          priority
-          unoptimized
-        />
-        {/* Lớp mờ rất nhẹ chỉ để chữ không bị chìm hoàn toàn vào nền trắng của váy cưới */}
-        <div className="absolute inset-0 bg-black/10" />
+    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex flex-col md:flex-row bg-[#FAF8F5]">
+      {/* Lớp nền Parallax / Ảnh chính (80% on desktop) */}
+      <div className="relative w-full md:w-4/5 h-[70vh] md:h-full overflow-hidden">
+        <div ref={bgRef} className="absolute inset-0 w-full h-[120%] -top-[10%] z-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1920&auto=format&fit=crop"
+            alt="Wedding Hero"
+            fill
+            className="object-cover object-[left_center]"
+            priority
+            unoptimized
+          />
+          {/* Lớp mờ rất nhẹ */}
+          <div className="absolute inset-0 bg-black/10" />
+        </div>
+        
+        {/* Nội dung Tên */}
+        <div className="absolute inset-0 z-10 flex flex-col items-center md:items-start justify-center text-center md:text-left px-8 text-white w-full h-full md:pl-20">
+          <p className="text-sm md:text-base tracking-[0.3em] uppercase mb-4 opacity-90 drop-shadow-md font-light text-[#d4af37]">
+            Tân Lang & Tân Nương
+          </p>
+          
+          <h1 className="text-7xl md:text-9xl font-calligraphy mb-2 drop-shadow-lg text-[#d4af37] leading-tight">
+            {leftName} <br className="md:hidden" /> <span className="hidden md:inline"> & </span> {rightName}
+          </h1>
+
+          {/* SVG Handwriting Cursive stroke */}
+          <svg className="w-64 md:w-96 h-16 mt-2" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path ref={pathRef} d="M10,80 Q100,-20 200,60 T380,50" stroke="#d4af37" strokeWidth="4" strokeLinecap="round" className="drop-shadow-md" />
+          </svg>
+        </div>
       </div>
 
-      {/* Lớp Nội dung */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 text-white w-full h-full pb-20">
-        <p className="text-sm md:text-base tracking-[0.3em] uppercase mb-4 opacity-90 drop-shadow-md font-light text-[#d4af37]">
-          Tân Lang & Tân Nương
-        </p>
-        
-        <h1 className="text-7xl md:text-9xl font-calligraphy mb-6 drop-shadow-lg text-[#d4af37] leading-tight">
-          {leftName} <br className="md:hidden" /> <span className="hidden md:inline"> & </span> {rightName}
-        </h1>
-        
-        <div className="w-px h-16 bg-gradient-to-b from-transparent via-[#d4af37]/70 to-transparent mb-6" />
-
-        <div className="text-lg md:text-xl font-light tracking-wide bg-black/20 backdrop-blur-sm px-8 py-4 rounded-2xl border border-white/10 shadow-xl">
-          <p className="mb-1 text-gray-200">Save the date</p>
-          <p className="font-semibold text-2xl text-white">
+      {/* Cột 20% bên phải chứa Save The Date (chồng lên trên ở mobile, cạnh nhau ở desktop) */}
+      <div className="relative md:w-1/5 w-full h-[30vh] md:h-full z-20 flex items-center justify-center md:border-l border-[#d4af37]/20 bg-white/60 backdrop-blur-xl md:backdrop-blur-md">
+        <div className="text-center px-6 py-8">
+          <p className="mb-2 text-gray-500 uppercase tracking-widest text-xs font-semibold">Save the date</p>
+          <div className="w-12 h-[1px] bg-[#d4af37] mx-auto mb-4" />
+          <p className="font-serif text-3xl md:text-4xl text-gray-800 mb-2">
             {data.ceremony.dateSolar}
           </p>
-          <p className="mt-1 text-sm text-gray-300">Nhằm ngày {data.ceremony.dateLunar}</p>
+          <p className="text-xs text-gray-500">Nhằm ngày {data.ceremony.dateLunar}</p>
         </div>
       </div>
     </section>

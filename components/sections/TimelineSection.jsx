@@ -1,22 +1,36 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { Heart } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 export default function TimelineSection({ events }) {
   const containerRef = useRef(null);
-  const progressBarRef = useRef(null);
   const cardsRef = useRef([]);
+  const pathRef = useRef(null);
+  const iconRef = useRef(null);
+  
+  const [svgHeight, setSvgHeight] = useState(1000);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      setSvgHeight(containerRef.current.offsetHeight);
+    }
+  }, [events]);
 
   useGSAP(() => {
-    // 1. Chạy thanh tiến trình vàng theo cuộn chuột
-    gsap.to(progressBarRef.current, {
-      scaleY: 1,
-      transformOrigin: "top center",
+    // Animate the icon along the SVG path
+    gsap.to(iconRef.current, {
+      motionPath: {
+        path: pathRef.current,
+        align: pathRef.current,
+        alignOrigin: [0.5, 0.5],
+      },
       ease: "none",
       scrollTrigger: {
         trigger: containerRef.current,
@@ -26,7 +40,7 @@ export default function TimelineSection({ events }) {
       }
     });
 
-    // 2. Hiện thẻ sự kiện khi thanh cuộn đi ngang qua
+    // Reveal cards when scrolled into view
     cardsRef.current.forEach((card, index) => {
       gsap.fromTo(card, 
         { opacity: 0, x: -30 },
@@ -37,13 +51,13 @@ export default function TimelineSection({ events }) {
           ease: "power2.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 70%", // Khi card lên tới 70% màn hình thì hiện ra
+            start: "top 70%",
             toggleActions: "play none none reverse"
           }
         }
       );
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [svgHeight] });
 
   return (
     <section ref={containerRef} className="py-32 px-6 max-w-4xl mx-auto relative z-10">
@@ -52,23 +66,35 @@ export default function TimelineSection({ events }) {
         <p className="text-gray-500 font-light tracking-wide uppercase">Cùng chia vui cùng hai gia đình</p>
       </div>
 
-      <div className="relative pl-6 md:pl-12 border-l-2 border-dashed border-amber-200 py-10">
-        {/* Thanh Progress Bar vàng chạy đè lên border-l */}
-        <div 
-          ref={progressBarRef}
-          className="absolute top-0 left-[-2px] w-[2px] h-full bg-gradient-to-b from-amber-200 via-[#d4af37] to-amber-200 scale-y-0"
-        />
+      <div className="relative pl-6 md:pl-12 py-10">
+        
+        {/* SVG Path for Timeline */}
+        <div className="absolute top-0 left-[-15px] md:left-[-3px] w-[50px] h-full pointer-events-none z-0">
+          <svg width="50" height={svgHeight} className="overflow-visible">
+            {/* The squiggly or straight line */}
+            <path
+              ref={pathRef}
+              d={`M 25 0 Q 40 ${svgHeight * 0.25} 25 ${svgHeight * 0.5} T 25 ${svgHeight}`}
+              fill="none"
+              stroke="#D4AF37"
+              strokeWidth="2"
+              strokeDasharray="6 6"
+            />
+          </svg>
+          
+          {/* The moving icon */}
+          <div ref={iconRef} className="absolute top-0 left-0 text-[#d4af37] drop-shadow-md w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-[#d4af37]">
+            <Heart size={16} fill="#d4af37" />
+          </div>
+        </div>
 
-        <div className="space-y-16">
+        <div className="space-y-16 relative z-10">
           {events.map((event, index) => (
             <div 
               key={event.id} 
               ref={el => cardsRef.current[index] = el}
               className="relative"
             >
-              {/* Nút tròn trên timeline */}
-              <div className="absolute -left-[33px] md:-left-[57px] top-4 w-4 h-4 rounded-full bg-white border-4 border-[#d4af37] shadow-lg shadow-amber-200/50" />
-              
               <div className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border border-white border-l-4 border-l-[#d4af37] hover:-translate-y-1 transition-transform duration-300">
                 <span className="inline-block px-3 py-1 bg-amber-50 text-[#d4af37] text-sm font-semibold tracking-wider rounded-full mb-3 uppercase">
                   {event.time} | {event.date}
