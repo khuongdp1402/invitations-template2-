@@ -15,6 +15,11 @@ import TimelineSection from '@/components/sections/TimelineSection';
 import CalendarSection from '@/components/sections/CalendarSection';
 import TypographyBreak from '@/components/sections/TypographyBreak';
 import RsvpSection from '@/components/sections/RsvpSection';
+import FamilySection from '@/components/sections/FamilySection';
+import InvitationWords from '@/components/sections/InvitationWords';
+import GallerySection from '@/components/sections/GallerySection';
+import MapSection from '@/components/sections/MapSection';
+import FloatingMusicPlayer from '@/components/ui/FloatingMusicPlayer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +38,8 @@ function WeddingContent() {
 
   return (
     <div className="min-h-screen bg-transparent text-gray-900 font-sans relative">
+      <FloatingMusicPlayer />
+
       {/* 1. Hero Section */}
       <HeroSection name={name} role={role} />
 
@@ -41,30 +48,36 @@ function WeddingContent() {
 
       {/* 3. Lời mời tóm tắt & Chữ ký */}
       <div className="py-20 flex flex-col items-center justify-center relative z-10 bg-white/60 backdrop-blur-sm shadow-xl rounded-t-[3rem] -mt-10 border-t border-white">
-        <p className="text-center text-gray-500 font-light px-6 max-w-2xl leading-relaxed mb-8">
-          Tình yêu là một hành trình dài. Thật hạnh phúc vì trên chặng đường sắp tới, chúng tôi có bạn cùng chung vui.
-        </p>
         <HandwritingText />
       </div>
 
-      {/* 4. Typography Text Mask */}
+      {/* 4. Family Section (Nhà Trai - Nhà Gái) */}
+      <FamilySection />
+
+      {/* 5. Trân Trọng Kính Mời */}
+      <InvitationWords />
+
+      {/* 6. Typography Text Mask */}
       <TypographyBreak />
 
-      {/* 5. Love Timeline */}
+      {/* 7. Love Timeline */}
       <TimelineSection events={sortedEvents} />
 
-      {/* 6. Calendar */}
+      {/* 8. Calendar */}
       <CalendarSection />
 
-      {/* 7. The Color Burst Transition */}
-      <div className="relative z-10 bg-white/30 backdrop-blur-md pt-20 pb-10">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-serif text-gray-800">Khoảnh khắc đáng nhớ</h2>
-        </div>
+      {/* 9. Gallery */}
+      <GallerySection />
+
+      {/* 10. The Color Burst Transition */}
+      <div className="relative z-10 bg-[#fdfcf0] pt-20 pb-10 border-t border-gray-100">
         <ColorBurstImage />
       </div>
 
-      {/* 8. RSVP Form */}
+      {/* 11. Map */}
+      <MapSection />
+
+      {/* 12. RSVP Form */}
       <RsvpSection name={name} />
     </div>
   );
