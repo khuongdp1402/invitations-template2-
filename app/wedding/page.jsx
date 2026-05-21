@@ -19,7 +19,7 @@ function WeddingContent() {
   });
 
   return (
-    <div className="min-h-screen p-8 bg-gray-50 text-gray-900 font-sans">
+    <div className="min-h-screen p-8 pb-[100vh] bg-transparent text-gray-900 font-sans">
       <h1 className="text-3xl font-bold mb-6 text-center text-[#d4af37]">
         Thiệp Cưới Khương & Hiền
       </h1>
