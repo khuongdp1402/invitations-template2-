@@ -63,6 +63,16 @@ Trọng tâm: Xây dựng trải nghiệm thiệp cưới động hoàn chỉnh 
 Plans:
 - [ ] TBD (run /gsd-plan-phase 04.1 to break down)
 
+### Phase 04.1.1: Nâng cấp hoạt ảnh 3D và giao diện động học (Three.js & GSAP) (INSERTED)
+
+**Goal:** [Urgent work - to be planned]
+**Requirements**: TBD
+**Depends on:** Phase 4.1
+**Plans:** 1/1 plans complete
+
+Plans:
+- [x] TBD (run /gsd-plan-phase 04.1.1 to break down) (completed 2026-05-21)
+
 ### Phase 5: TỐI ƯU HÓA TRẢI NGHIỆM DI ĐỘNG & HIỆU NĂNG
 **Goal:** Áp dụng tối ưu tài nguyên (hình ảnh, responsive canvas) để đáp ứng Webview Zalo/FB.
 
