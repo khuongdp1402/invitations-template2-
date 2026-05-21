@@ -1,19 +1,69 @@
 "use client";
 
-import React from 'react';
-import Gallery3D from '../canvas/Gallery3D';
+import React, { useRef } from 'react';
+import Image from 'next/image';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const IMG_URLS = [
+  "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop"
+];
 
 export default function GallerySection() {
+  const containerRef = useRef(null);
+  const scrollRef = useRef(null);
+
+  useGSAP(() => {
+    const totalWidth = scrollRef.current.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    
+    gsap.to(scrollRef.current, {
+      x: () => -(totalWidth - viewportWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: () => `+=${totalWidth}`, // Cuộn dài bằng tổng độ rộng dải ảnh
+        pin: true,
+        scrub: 1,
+        invalidateOnRefresh: true,
+      }
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className="relative w-full h-[80vh] md:h-screen bg-[#111] z-10 border-t border-gray-900 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full pt-16 md:pt-24 pointer-events-none z-20">
-        <div className="text-center">
-          <p className="text-xs tracking-[0.3em] text-[#d4af37] font-semibold uppercase mb-4">Khoảnh Khắc</p>
-          <h2 className="text-4xl md:text-5xl font-serif text-white drop-shadow-md">Our Memories</h2>
-        </div>
+    <section ref={containerRef} className="relative w-full h-screen bg-[#FAF8F5] z-10 overflow-hidden border-t border-gray-100">
+      
+      {/* Title */}
+      <div className="absolute top-16 md:top-24 left-0 w-full z-20 pointer-events-none text-center">
+        <p className="text-xs tracking-[0.3em] text-[#d4af37] font-semibold uppercase mb-4">Khoảnh Khắc</p>
+        <h2 className="text-4xl md:text-5xl font-serif text-gray-800 drop-shadow-sm">Our Journey</h2>
       </div>
-      <div className="absolute inset-0 w-full h-full z-10 pointer-events-auto">
-        <Gallery3D />
+
+      {/* The Scroll Container */}
+      <div className="flex items-center h-full pt-20 px-10 md:px-20 w-[max-content]" ref={scrollRef}>
+        {IMG_URLS.map((url, i) => (
+          <div key={i} className="relative w-[75vw] md:w-[35vw] h-[55vh] md:h-[65vh] flex-shrink-0 mr-8 md:mr-20 rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-8 border-white group">
+            <Image 
+              src={url} 
+              alt={`Memory ${i}`} 
+              fill 
+              className="object-cover transition-transform duration-700 group-hover:scale-105" 
+              sizes="(max-width: 768px) 75vw, 35vw"
+              unoptimized
+            />
+          </div>
+        ))}
+        {/* Empty padding at the end */}
+        <div className="w-[10vw] flex-shrink-0" />
       </div>
     </section>
   );
