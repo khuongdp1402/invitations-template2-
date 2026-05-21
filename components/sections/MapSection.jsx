@@ -1,0 +1,29 @@
+"use client";
+
+import React from 'react';
+
+export default function MapSection() {
+  return (
+    <section className="py-20 bg-gray-50 relative z-10 border-t border-gray-100">
+      <div className="max-w-4xl mx-auto px-4 text-center">
+        <h3 className="text-2xl font-serif text-gray-800 mb-4">Hướng dẫn đường đi</h3>
+        <p className="text-gray-600 mb-8 max-w-lg mx-auto">
+          Để thuận tiện cho việc di chuyển, quý khách có thể xem bản đồ hướng dẫn đường đi chi tiết bằng Google Maps.
+        </p>
+        
+        <a 
+          href="https://maps.google.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center px-8 py-4 bg-[#7a1f24] text-white font-medium rounded-full shadow-lg hover:bg-[#5a1519] transition-colors gap-2"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Chỉ đường trên Google Maps
+        </a>
+      </div>
+    </section>
+  );
+}
