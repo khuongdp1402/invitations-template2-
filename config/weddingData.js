@@ -19,6 +19,17 @@ export const weddingData = {
     }
   ],
 
+  // Link ảnh cho phần Gallery. Bạn có thể chép link Google Drive (link chia sẻ) vào đây.
+  // Hệ thống sẽ tự động convert link Drive thành link ảnh trực tiếp để hiển thị.
+  gallery: [
+    "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop"
+  ],
+
   // Thông tin dùng chung cho cả 2 bên (Tránh lặp code)
   couple: {
     groom: {

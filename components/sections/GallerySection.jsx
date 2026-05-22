@@ -5,17 +5,12 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { weddingData } from '@/config/weddingData';
+import { getDirectImageUrl } from '@/lib/utils/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const IMG_URLS = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop"
-];
+const IMG_URLS = weddingData.gallery || [];
 
 export default function GallerySection() {
   const containerRef = useRef(null);
@@ -53,7 +48,7 @@ export default function GallerySection() {
         {IMG_URLS.map((url, i) => (
           <div key={i} className="relative w-[75vw] md:w-[35vw] h-[55vh] md:h-[65vh] flex-shrink-0 mr-8 md:mr-20 rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-8 border-white group">
             <Image 
-              src={url} 
+              src={getDirectImageUrl(url)} 
               alt={`Memory ${i}`} 
               fill 
               className="object-cover transition-transform duration-700 group-hover:scale-105" 
