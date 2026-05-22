@@ -49,7 +49,7 @@ function WeddingContent() {
       <LaunchTrigger />
 
       {/* 3. Lời mời tóm tắt & Chữ ký */}
-      <div className="py-20 flex flex-col items-center justify-center relative z-10 bg-black/40 backdrop-blur-sm shadow-xl rounded-t-[3rem] -mt-10 border-t border-white">
+      <div className="py-20 flex flex-col items-center justify-center relative z-10 bg-[#FAF3F0]/60 backdrop-blur-sm shadow-xl rounded-t-[3rem] -mt-10 border-t border-white">
         <HandwritingText />
       </div>
 
@@ -78,7 +78,7 @@ function WeddingContent() {
       <MouseTrailGallerySection />
 
       {/* 10. The Color Burst Transition */}
-      <div className="relative z-10 bg-[#0A1128] pt-20 pb-10 border-t border-gray-700">
+      <div className="relative z-10 bg-transparent pt-20 pb-10 border-t border-[#4A3728]/10">
         <ColorBurstImage />
       </div>
 

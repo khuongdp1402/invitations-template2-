@@ -27,7 +27,7 @@ export default function InvitationWords() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-24 px-4 bg-[#0A1128] relative z-10 overflow-hidden">
+    <section ref={containerRef} className="py-24 px-4 bg-transparent relative z-10 overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-8">
         
         {/* Ảnh trái (Chú rể) */}
@@ -45,17 +45,17 @@ export default function InvitationWords() {
 
         {/* Lời mời (Giữa) */}
         <div className="invitation-item w-full md:w-1/3 text-center px-4">
-          <div className="text-[#E5D3B3] mb-6">
+          <div className="text-[#C06C59] mb-6">
             <svg className="w-8 h-8 mx-auto" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
           </div>
           <h2 className="text-2xl tracking-[0.2em] text-[#7a1f24] uppercase font-semibold mb-8">Trân trọng kính mời</h2>
-          <p className="text-gray-200 font-serif text-lg md:text-xl leading-relaxed mb-6">
+          <p className="text-[#4A3728] font-serif text-lg md:text-xl leading-relaxed mb-6">
             quý khách tới dự buổi tiệc chung vui cùng gia đình chúng tôi.
           </p>
-          <p className="text-gray-300 font-serif leading-relaxed">
-            Sự hiện diện của <strong className="font-semibold text-gray-100">quý khách</strong> là niềm vinh hạnh lớn lao cho gia đình chúng tôi.
+          <p className="text-[#4A3728]/80 font-serif leading-relaxed">
+            Sự hiện diện của <strong className="font-semibold text-[#4A3728]">quý khách</strong> là niềm vinh hạnh lớn lao cho gia đình chúng tôi.
           </p>
           
           <div className="w-24 h-px bg-amber-200 mx-auto mt-10" />

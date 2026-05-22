@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function WeddingLayout({ children }) {
   return (
-    <div className="relative min-h-screen bg-[#fdfbf7]">
+    <div className="relative min-h-screen bg-[#FAF3F0]">
       {/* 
         AntiGravityCanvas (z-0) 
         Nó sẽ làm nền cho tất cả các trang con bên trong /wedding

@@ -35,12 +35,12 @@ export default function GallerySection() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative w-full h-screen bg-[#0A1128] z-10 overflow-hidden border-t border-gray-700">
+    <section ref={containerRef} className="relative w-full h-screen bg-transparent z-10 overflow-hidden border-t border-[#4A3728]/10">
       
       {/* Title */}
       <div className="absolute top-16 md:top-24 left-0 w-full z-20 pointer-events-none text-center">
-        <p className="text-xs tracking-[0.3em] text-[#E5D3B3] font-semibold uppercase mb-4">Khoảnh Khắc</p>
-        <h2 className="text-4xl md:text-5xl font-serif text-gray-100 drop-shadow-sm">Our Journey</h2>
+        <p className="text-xs tracking-[0.3em] text-[#C06C59] font-semibold uppercase mb-4">Khoảnh Khắc</p>
+        <h2 className="text-4xl md:text-5xl font-serif text-[#4A3728] drop-shadow-sm">Our Journey</h2>
       </div>
 
       {/* The Scroll Container */}
