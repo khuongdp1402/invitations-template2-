@@ -85,6 +85,16 @@ Plans:
 - 2. Có thể tương tác click/map xuyên qua lớp Canvas mà không vướng (`pointer-events: none`).
 - 3. Dung lượng page load ảnh được giữ nhỏ gọn.
 
+### Phase 6: Thiết kế màn hình chờ phong thư có dấu mộc và tinh chỉnh hiệu ứng hoa rơi
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 5
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 6 to break down)
+
 ---
 ## Future Milestones
 - (None yet)

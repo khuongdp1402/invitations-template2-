@@ -4,56 +4,64 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { weddingData } from '@/config/weddingData';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CalendarSection() {
+export default function CalendarSection({ side }) {
   const containerRef = useRef(null);
-  const circleRef = useRef(null);
+  const heart1Ref = useRef(null);
+  const heart2Ref = useRef(null);
 
-  // Mảng các ngày trong tháng 6/2026. 
-  // Tháng 6/2026 bắt đầu vào thứ Hai, có 30 ngày.
+  const currentSide = side === 'nhagai' ? 'nhagai' : 'nhatrai';
+  const data = weddingData[currentSide];
+  
+  // Lấy ngày từ chuỗi "09/06/2026" -> 9
+  const weddingDay = parseInt(data.ceremony.dateSolar.split('/')[0], 10);
+
+  // Mảng các ngày trong tháng 6/2026
   const days = Array.from({ length: 30 }, (_, i) => i + 1);
-  const blankDays = []; // Tháng 6/2026 bắt đầu thứ Hai, nên không cần ô trống đầu (nếu T2 là ô đầu tiên)
-
-  // Nếu cột bắt đầu từ Chủ Nhật (Sunday) thì T6/2026 bắt đầu bằng thứ Hai -> 1 ô trống.
   const weekDays = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
   const paddingDays = Array.from({ length: 1 }, (_, i) => i);
 
   useGSAP(() => {
-    const circle = circleRef.current;
-    if (!circle) return;
+    const hearts = [heart1Ref.current, heart2Ref.current];
+    
+    hearts.forEach((heart, index) => {
+      if (!heart) return;
+      const length = heart.getTotalLength();
+      gsap.set(heart, {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+        opacity: 0
+      });
 
-    const length = circle.getTotalLength();
-    gsap.set(circle, {
-      strokeDasharray: length,
-      strokeDashoffset: length,
-      opacity: 0
-    });
-
-    gsap.to(circle, {
-      strokeDashoffset: 0,
-      opacity: 1,
-      duration: 1.5,
-      ease: "power2.inOut",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 60%", // Bắt đầu khoanh tròn khi cuộn đến 60%
-      }
+      gsap.to(heart, {
+        strokeDashoffset: 0,
+        opacity: 1,
+        duration: 1.5,
+        delay: index * 0.3, // Trái tim thứ 2 vẽ sau trái tim 1 một chút
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 60%", 
+        }
+      });
     });
 
   }, { scope: containerRef });
 
+  // Thêm md:-translate-y-12 để tạo hiệu ứng so le với ảnh bên phải
   return (
-    <section ref={containerRef} className="py-24 px-4 relative z-10">
-      <div className="max-w-md mx-auto bg-[#FAF3F0]/60 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white">
+    <section ref={containerRef} className="w-full relative z-10 md:-translate-y-12">
+      <div className="max-w-md mx-auto bg-[#FFF8DC]/60 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white">
         <div className="text-center mb-8">
           <p className="text-sm tracking-[0.2em] uppercase text-[#4A3728]/60 mb-2">Save the Date</p>
-          <h2 className="text-4xl font-serif text-[#C06C59]">Tháng 6 . 2026</h2>
+          <h2 className="text-4xl font-serif text-[#7a1f24]">Tháng 6 . 2026</h2>
         </div>
 
         {/* Lưới Lịch */}
-        <div className="grid grid-cols-7 gap-2 text-center mb-4">
+        <div className="grid grid-cols-7 gap-2 text-center mb-4 relative z-20">
           {weekDays.map(day => (
             <div key={day} className="text-xs font-bold text-[#4A3728]/60">{day}</div>
           ))}
@@ -63,32 +71,44 @@ export default function CalendarSection() {
           ))}
 
           {days.map(day => {
-            // Ngày cưới là 6 và 7
-            const isWeddingDay = day === 6 || day === 7;
+            const isWeddingDay = day === weddingDay;
             
             return (
               <div 
                 key={day} 
                 className={`p-2 relative flex items-center justify-center text-sm md:text-base font-medium
-                  ${isWeddingDay ? 'text-gray-900' : 'text-[#4A3728]/60'}
+                  ${isWeddingDay ? 'text-[#7a1f24] font-bold z-10' : 'text-[#4A3728]/60'}
                 `}
               >
                 {day}
                 
-                {/* SVG Khoanh vùng quanh ngày 6 và 7 */}
-                {day === 6 && (
+                {/* 2 trái tim đè lên nhau khoanh vào ngày */}
+                {isWeddingDay && (
                   <svg 
-                    className="absolute z-[-1] overflow-visible w-[220%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                    viewBox="0 0 100 50" 
+                    className="absolute z-[-1] overflow-visible w-[180%] h-[180%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    viewBox="0 0 100 100" 
                     fill="none"
                   >
-                    {/* Vẽ một hình oval bọc lấy cả 2 ô (Ngày 6 và 7 kề nhau) */}
+                    {/* Trái tim 1 (Lệch trái dưới) */}
                     <path 
-                      ref={circleRef}
-                      d="M 20 25 C 20 5, 80 5, 80 25 C 80 45, 20 45, 20 25 Z" 
-                      stroke="#D48C70" 
+                      ref={heart1Ref}
+                      d="M 50 35 C 50 25, 30 20, 20 35 C 10 50, 50 75, 50 75 C 50 75, 90 50, 80 35 C 70 20, 50 25, 50 35 Z" 
+                      stroke="#7a1f24" 
                       strokeWidth="2"
                       strokeLinecap="round"
+                      strokeLinejoin="round"
+                      transform="translate(-3, 3) rotate(-10 50 50)"
+                    />
+                    {/* Trái tim 2 (Lệch phải trên) */}
+                    <path 
+                      ref={heart2Ref}
+                      d="M 50 35 C 50 25, 30 20, 20 35 C 10 50, 50 75, 50 75 C 50 75, 90 50, 80 35 C 70 20, 50 25, 50 35 Z" 
+                      stroke="#7a1f24" 
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      transform="translate(4, -2) rotate(15 50 50)"
+                      opacity="0.8"
                     />
                   </svg>
                 )}
@@ -98,8 +118,10 @@ export default function CalendarSection() {
         </div>
         
         <div className="text-center mt-8 space-y-2">
-          <p className="font-serif text-lg text-[#4A3728]">Lễ Tân Hôn & Vu Quy</p>
-          <p className="text-sm font-light text-[#4A3728]/60 tracking-wide uppercase">06 & 07 Tháng 06 Năm 2026</p>
+          <p className="font-serif text-lg text-[#7a1f24] font-semibold">{data.ceremony.type}</p>
+          <p className="text-sm font-light text-[#4A3728]/60 tracking-wide uppercase">
+            {data.ceremony.dateSolar.replace(/\//g, ' Tháng ').replace(' Tháng 2026', ' Năm 2026')}
+          </p>
         </div>
       </div>
     </section>

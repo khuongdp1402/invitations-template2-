@@ -6,22 +6,37 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import { Heart } from 'lucide-react';
+import { weddingData } from '@/config/weddingData';
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-export default function TimelineSection({ events }) {
+export default function TimelineSection({ side }) {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
   const pathRef = useRef(null);
   const iconRef = useRef(null);
   
-  const [svgHeight, setSvgHeight] = useState(1000);
+  const [svgHeight, setSvgHeight] = useState(800);
+
+  const currentSide = side === 'nhagai' ? 'nhagai' : 'nhatrai';
+  const data = weddingData[currentSide];
+  
+  const dateStr = data.ceremony.dateSolar;
+  const locationStr = data.ceremony.address;
+
+  // Cố định 4 mốc thời gian
+  const fixedEvents = [
+    { id: 1, time: '09:00', name: 'Làm lễ', date: dateStr, location: locationStr },
+    { id: 2, time: '10:00', name: 'Đón khách', date: dateStr, location: locationStr },
+    { id: 3, time: '11:00', name: 'Nhập tiệc - Âm nhạc', date: dateStr, location: locationStr },
+    { id: 4, time: '12:00', name: 'Chụp ảnh lưu niệm', date: dateStr, location: locationStr },
+  ];
 
   useEffect(() => {
     if (containerRef.current) {
       setSvgHeight(containerRef.current.offsetHeight);
     }
-  }, [events]);
+  }, []);
 
   useGSAP(() => {
     // Animate the icon along the SVG path
@@ -60,13 +75,13 @@ export default function TimelineSection({ events }) {
   }, { scope: containerRef, dependencies: [svgHeight] });
 
   return (
-    <section ref={containerRef} className="py-32 px-6 max-w-4xl mx-auto relative z-10">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-serif text-[#C06C59] mb-4">Lịch trình Sự kiện</h2>
-        <p className="text-[#4A3728]/60 font-light tracking-wide uppercase">Cùng chia vui cùng hai gia đình</p>
+    <section ref={containerRef} className="py-10 px-4 md:px-6 max-w-3xl mx-auto relative z-10">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-serif text-[#7a1f24] mb-3">Lịch trình Sự kiện</h2>
+        <p className="text-[#4A3728]/60 text-sm font-light tracking-wide uppercase">Cùng chia vui cùng gia đình</p>
       </div>
 
-      <div className="relative pl-6 md:pl-12 py-10">
+      <div className="relative pl-6 md:pl-10 py-6">
         
         {/* SVG Path for Timeline */}
         <div className="absolute top-0 left-[-15px] md:left-[-3px] w-[50px] h-full pointer-events-none z-0">
@@ -76,41 +91,30 @@ export default function TimelineSection({ events }) {
               ref={pathRef}
               d={`M 25 0 Q 40 ${svgHeight * 0.25} 25 ${svgHeight * 0.5} T 25 ${svgHeight}`}
               fill="none"
-              stroke="#D48C70"
+              stroke="#D4AF37"
               strokeWidth="2"
               strokeDasharray="6 6"
             />
           </svg>
           
-          {/* The moving icon */}
-          <div ref={iconRef} className="absolute top-0 left-0 text-[#C06C59] drop-shadow-md w-8 h-8 flex items-center justify-center bg-transparent rounded-full border-2 border-[#D48C70]">
-            <Heart size={16} fill="#D48C70" />
+          <div ref={iconRef} className="absolute top-0 left-0 text-[#7a1f24] drop-shadow-md w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-transparent rounded-full border-2 border-[#D4AF37]">
+            <Heart size={14} fill="#D4AF37" />
           </div>
         </div>
 
-        <div className="space-y-16 relative z-10">
-          {events.map((event, index) => (
+        <div className="space-y-8 relative z-10">
+          {fixedEvents.map((event, index) => (
             <div 
               key={event.id} 
               ref={el => cardsRef.current[index] = el}
               className="relative"
             >
-              <div className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border border-white border-l-4 border-l-[#D48C70] hover:-translate-y-1 transition-transform duration-300">
-                <span className="inline-block px-3 py-1 bg-amber-50 text-[#C06C59] text-sm font-semibold tracking-wider rounded-full mb-3 uppercase">
+              <div className="bg-white/80 backdrop-blur-md p-4 md:p-6 rounded-2xl shadow-lg border border-white border-l-4 border-l-[#D4AF37] hover:-translate-y-1 transition-transform duration-300">
+                <span className="inline-block px-3 py-1 bg-[#FFF8DC] text-[#7a1f24] text-xs font-semibold tracking-wider rounded-full mb-2 uppercase">
                   {event.time} | {event.date}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-serif text-[#4A3728] mb-2">{event.name}</h3>
-                <p className="text-[#4A3728]/80 font-light leading-relaxed">{event.location}</p>
-                {event.mapUrl && (
-                  <a 
-                    href={event.mapUrl} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="inline-block mt-4 text-sm font-medium text-[#C06C59] hover:text-amber-700 underline underline-offset-4 decoration-amber-300 transition-colors"
-                  >
-                    Xem bản đồ đường đi &rarr;
-                  </a>
-                )}
+                <h3 className="text-xl md:text-2xl font-serif text-[#4A3728] mb-1">{event.name}</h3>
+                <p className="text-[#4A3728]/80 text-sm font-light leading-relaxed">{event.location}</p>
               </div>
             </div>
           ))}

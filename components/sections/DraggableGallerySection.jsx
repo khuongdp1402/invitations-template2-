@@ -23,8 +23,8 @@ export default function DraggableGallerySection() {
     gsap.utils.toArray('.polaroid-card').forEach((card) => {
       gsap.set(card, {
         rotation: gsap.utils.random(-25, 25),
-        x: gsap.utils.random(-80, 80),
-        y: gsap.utils.random(-80, 80),
+        x: gsap.utils.random(-200, 200),
+        y: gsap.utils.random(-150, 150),
       });
     });
 
@@ -46,9 +46,9 @@ export default function DraggableGallerySection() {
     <section ref={containerRef} className="relative w-full h-screen bg-[#e8e4db] z-10 overflow-hidden border-t border-white/50 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing">
       
       <div className="absolute top-16 md:top-24 left-0 w-full z-0 pointer-events-none text-center">
-        <p className="text-xs tracking-[0.3em] text-[#C06C59] font-semibold uppercase mb-4">Lưu Giữ</p>
+        <p className="text-xs tracking-[0.3em] text-[#7a1f24] font-semibold uppercase mb-4">Lưu Giữ</p>
         <h2 className="text-4xl md:text-5xl font-serif text-[#4A3728] drop-shadow-sm">Scrapbook</h2>
-        <p className="text-sm text-[#4A3728]/60 mt-4 italic font-serif">Kéo thả các bức ảnh để xem</p>
+        <p className="inline-block mt-6 px-6 py-2 bg-[#FFF8DC] border border-[#D4AF37]/50 rounded-full text-sm font-semibold text-[#7a1f24] shadow-md animate-bounce">👆 Kéo thả các bức ảnh bạn nhé!</p>
       </div>
 
       <div className="relative w-full h-full max-w-4xl flex items-center justify-center pointer-events-auto">

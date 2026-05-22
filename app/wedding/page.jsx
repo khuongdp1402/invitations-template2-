@@ -7,13 +7,12 @@ import { weddingData } from '@/config/weddingData';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import HandwritingText from '@/components/ui/transitions/HandwritingText';
 import ColorBurstImage from '@/components/ui/transitions/ColorBurstImage';
+import EnvelopeWelcome from '@/components/ui/transitions/EnvelopeWelcome';
 
 import HeroSection from '@/components/sections/HeroSection';
 import TimelineSection from '@/components/sections/TimelineSection';
 import CalendarSection from '@/components/sections/CalendarSection';
-import TypographyBreak from '@/components/sections/TypographyBreak';
 import RsvpSection from '@/components/sections/RsvpSection';
 import FamilySection from '@/components/sections/FamilySection';
 import InvitationWords from '@/components/sections/InvitationWords';
@@ -31,16 +30,14 @@ function WeddingContent() {
   const name = searchParams.get('name');
   const role = searchParams.get('role');
 
-  // Logic sắp xếp ưu tiên hiển thị theo nhà
-  const sortedEvents = [...weddingData.events].sort((a, b) => {
-    if (a.side === side) return -1;
-    if (b.side === side) return 1;
-    return 0;
-  });
+  // Bỏ logic sortedEvents cũ vì giờ sẽ dùng fix cứng trong TimelineSection
 
   return (
     <div className="min-h-screen bg-transparent text-gray-900 font-sans relative">
       <FloatingMusicPlayer />
+
+      {/* 0. Envelope Welcome Screen */}
+      <EnvelopeWelcome guestName={name} side={side} />
 
       {/* 1. Hero Section */}
       <HeroSection name={name} role={role} side={side} />
@@ -48,45 +45,43 @@ function WeddingContent() {
       {/* 2. The Launch Trigger (Ẩn) */}
       <LaunchTrigger />
 
-      {/* 3. Lời mời tóm tắt & Chữ ký */}
-      <div className="py-20 flex flex-col items-center justify-center relative z-10 bg-[#FAF3F0]/60 backdrop-blur-sm shadow-xl rounded-t-[3rem] -mt-10 border-t border-white">
-        <HandwritingText />
+
+
+      {/* 3. Lịch & Ảnh Sương Mù (2 cột) */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-center gap-10">
+        <div className="w-full md:w-1/2 flex justify-end">
+          <CalendarSection side={side} />
+        </div>
+        <div className="w-full md:w-1/2 flex justify-start">
+          <div className="w-full max-w-md">
+            <ColorBurstImage />
+          </div>
+        </div>
       </div>
 
-      {/* 4. Family Section (Nhà Trai - Nhà Gái) */}
-      <FamilySection side={side} />
-
-      {/* 5. Trân Trọng Kính Mời */}
-      <InvitationWords />
-
-      {/* 6. Typography Text Mask */}
-      <TypographyBreak />
-
-      {/* 7. Love Timeline */}
-      <TimelineSection events={sortedEvents} />
-
-      {/* 8. Calendar */}
-      <CalendarSection />
-
-      {/* 9. Gallery 1: Horizontal Scroll */}
+      {/* 4. Gallery 1: Khoảnh Khắc */}
       <GallerySection />
 
-      {/* 9.1 Gallery 2: Draggable Polaroid */}
+      {/* 5. Family Section (Nhà Trai - Nhà Gái) */}
+      <FamilySection side={side} />
+
+      {/* 6. Trân Trọng Kính Mời */}
+      <InvitationWords name={name} role={role} />
+
+      {/* 7. Gallery 2: Scrapbook */}
       <DraggableGallerySection />
 
-      {/* 9.2 Gallery 3: Mouse Trail Reveal */}
+      {/* 8. Love Timeline */}
+      <TimelineSection side={side} />
+
+      {/* 9. Gallery 3: Phép Màu */}
       <MouseTrailGallerySection />
 
-      {/* 10. The Color Burst Transition */}
-      <div className="relative z-10 bg-transparent pt-20 pb-10 border-t border-[#4A3728]/10">
-        <ColorBurstImage />
-      </div>
+      {/* 10. RSVP Form */}
+      <RsvpSection name={name} />
 
       {/* 11. Map */}
       <MapSection />
-
-      {/* 12. RSVP Form */}
-      <RsvpSection name={name} />
     </div>
   );
 }

@@ -31,6 +31,7 @@ See: .planning/PROJECT.md (updated 2026-05-21)
 
 - Phase 4.1 inserted after Phase 4: Hoàn thiện bố cục Content và Media (URGENT)
 - Phase 4.1.1 inserted after Phase 4.1: Nâng cấp hoạt ảnh 3D và giao diện động học (Three.js & GSAP) (URGENT)
+- Phase 6 added: Thiết kế màn hình chờ phong thư có dấu mộc và tinh chỉnh hiệu ứng hoa rơi
 
 ### System Evolution
 

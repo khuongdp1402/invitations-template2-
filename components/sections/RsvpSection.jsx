@@ -47,11 +47,11 @@ export default function RsvpSection({ name }) {
   };
 
   return (
-    <section className="py-24 px-4 relative z-10">
+    <section className="py-12 px-4 relative z-10">
       <div className="max-w-xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-serif text-[#C06C59] mb-2">Phúc Đáp</h2>
-          <p className="text-[#4A3728]/60 font-light">Sự hiện diện của bạn là niềm vinh hạnh cho gia đình chúng tôi</p>
+          <h2 className="text-4xl font-serif text-[#7a1f24] mb-2">Phúc Đáp (RSVP) 💌</h2>
+          <p className="text-[#4A3728]/60 font-light">Sự hiện diện của bạn là món quà to bự nhất dành cho tụi mình đấy! 🥰</p>
         </div>
 
         {isSubmitted ? (
@@ -61,24 +61,24 @@ export default function RsvpSection({ name }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-2xl font-serif text-[#4A3728]">Cảm ơn {name || 'bạn'}!</h3>
-            <p className="text-[#4A3728]/80">Chúng tôi đã nhận được phản hồi. Hẹn gặp bạn tại lễ cưới nhé!</p>
+            <h3 className="text-2xl font-serif text-[#4A3728]">Triệu like cho {name || 'bạn'}! 👍</h3>
+            <p className="text-[#4A3728]/80">Tụi mình đã nhận được phản hồi. Hẹn quẩy hết mình tại đám cưới nhé! 🎉🍻</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-[#4A3728] mb-1">Tên khách mời</label>
+              <label className="block text-sm font-medium text-[#4A3728] mb-1">Tên khách mời thân thương 💕</label>
               <input 
                 type="text" 
                 value={name || ''} 
                 disabled 
-                className="w-full px-4 py-2 bg-gray-50 border border-[#4A3728]/10 rounded-md text-[#4A3728]/60 cursor-not-allowed"
+                className="w-full px-4 py-2 bg-[#FFF8DC] border border-[#4A3728]/10 rounded-md text-[#4A3728]/60 cursor-not-allowed"
               />
-              <p className="text-xs text-[#4A3728]/60 mt-1">* Tên được điền tự động từ thiệp mời</p>
+              <p className="text-xs text-[#4A3728]/60 mt-1">* Tên được điền tự động (chống fake vé mời đó nha 😎)</p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#4A3728] mb-2">Bạn sẽ tham dự chứ?</label>
+              <label className="block text-sm font-medium text-[#4A3728] mb-2">Bạn sẽ đến chung vui chứ? 👀</label>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input 
@@ -87,9 +87,9 @@ export default function RsvpSection({ name }) {
                     value="yes"
                     checked={formData.attendance === 'yes'}
                     onChange={(e) => setFormData({...formData, attendance: e.target.value})}
-                    className="text-amber-500 focus:ring-amber-400"
+                    className="text-[#D4AF37] focus:ring-[#E2B75A]"
                   />
-                  <span className="text-[#4A3728]">Chắc chắn rồi!</span>
+                  <span className="text-[#4A3728]">Chắc chắn rồi! Quẩy tới bến! 🚀</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input 
@@ -98,45 +98,45 @@ export default function RsvpSection({ name }) {
                     value="no"
                     checked={formData.attendance === 'no'}
                     onChange={(e) => setFormData({...formData, attendance: e.target.value})}
-                    className="text-amber-500 focus:ring-amber-400"
+                    className="text-[#D4AF37] focus:ring-[#E2B75A]"
                   />
-                  <span className="text-[#4A3728]">Rất tiếc không thể đến</span>
+                  <span className="text-[#4A3728]">Bận mất tiêu, xin lỗi nha 🥺</span>
                 </label>
               </div>
             </div>
 
             {formData.attendance === 'yes' && (
               <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                <label className="block text-sm font-medium text-[#4A3728] mb-1">Số người tham dự</label>
+                <label className="block text-sm font-medium text-[#4A3728] mb-1">Đi mấy người để tụi mình dọn cỗ nè? 🍽️</label>
                 <select 
                   value={formData.guests}
                   onChange={(e) => setFormData({...formData, guests: e.target.value})}
-                  className="w-full px-4 py-2 bg-transparent border border-[#4A3728]/10 rounded-md focus:border-amber-400 focus:ring-amber-400 outline-none transition-colors"
+                  className="w-full px-4 py-2 bg-transparent border border-[#4A3728]/10 rounded-md focus:border-[#E2B75A] focus:ring-[#E2B75A] outline-none transition-colors"
                 >
-                  <option value="1">1 người (Chỉ mình tôi)</option>
-                  <option value="2">2 người (Đi cùng người thương)</option>
-                  <option value="3">Hơn 2 người (Đi cùng gia đình)</option>
+                  <option value="1">1 người (Đi lẻ nhưng quẩy khỏe) 😎</option>
+                  <option value="2">2 người (Có đôi có cặp) 👫</option>
+                  <option value="3">Hơn 2 người (Kéo cả hội) 🥳</option>
                 </select>
               </div>
             )}
 
             <div>
-              <label className="block text-sm font-medium text-[#4A3728] mb-1">Lời chúc gửi tới Cô dâu & Chú rể</label>
+              <label className="block text-sm font-medium text-[#4A3728] mb-1">Để lại vài lời ướt át cho tụi mình nha ✍️</label>
               <textarea 
                 rows="3" 
-                placeholder="Gửi gắm chút tình cảm vào đây nhé..."
+                placeholder="Ví dụ: Chúc hai bạn trăm năm hạnh phúc, sớm sinh quý tử..."
                 value={formData.wishes}
                 onChange={(e) => setFormData({...formData, wishes: e.target.value})}
-                className="w-full px-4 py-2 bg-transparent border border-[#4A3728]/10 rounded-md focus:border-amber-400 focus:ring-amber-400 outline-none transition-colors resize-none"
+                className="w-full px-4 py-2 bg-transparent border border-[#4A3728]/10 rounded-md focus:border-[#E2B75A] focus:ring-[#E2B75A] outline-none transition-colors resize-none"
               ></textarea>
             </div>
 
-            <button 
-              type="submit"
-              className="w-full py-3 bg-[#D48C70] hover:bg-amber-500 text-white font-semibold rounded-md shadow-lg shadow-amber-200 transition-all active:scale-95 uppercase tracking-wider"
-            >
-              Gửi Phản Hồi
-            </button>
+              <button 
+                type="submit"
+                className="w-full py-3 bg-[#7a1f24] hover:bg-[#5a1519] text-white font-bold rounded-md shadow-lg shadow-[#7a1f24]/30 transition-all active:scale-95 uppercase tracking-wider"
+              >
+                Chốt Đơn! 🚀
+              </button>
           </form>
         )}
       </div>
