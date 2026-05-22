@@ -45,8 +45,7 @@ export default function FloatingMusicPlayer() {
         ref={audioRef} 
         loop 
         preload="auto" 
-        // Dùng một bài hát mẫu (có thể thay đổi URL sau)
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" 
+        src="/Marry You.mp3" 
       />
       
       <button 
