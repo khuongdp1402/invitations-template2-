@@ -62,7 +62,7 @@ export default function TimelineSection({ events }) {
   return (
     <section ref={containerRef} className="py-32 px-6 max-w-4xl mx-auto relative z-10">
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-serif text-[#d4af37] mb-4">Lịch trình Sự kiện</h2>
+        <h2 className="text-4xl md:text-5xl font-serif text-[#8B1C1C] mb-4">Lịch trình Sự kiện</h2>
         <p className="text-gray-500 font-light tracking-wide uppercase">Cùng chia vui cùng hai gia đình</p>
       </div>
 
@@ -76,15 +76,15 @@ export default function TimelineSection({ events }) {
               ref={pathRef}
               d={`M 25 0 Q 40 ${svgHeight * 0.25} 25 ${svgHeight * 0.5} T 25 ${svgHeight}`}
               fill="none"
-              stroke="#D4AF37"
+              stroke="#C5A059"
               strokeWidth="2"
               strokeDasharray="6 6"
             />
           </svg>
           
           {/* The moving icon */}
-          <div ref={iconRef} className="absolute top-0 left-0 text-[#d4af37] drop-shadow-md w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-[#d4af37]">
-            <Heart size={16} fill="#d4af37" />
+          <div ref={iconRef} className="absolute top-0 left-0 text-[#8B1C1C] drop-shadow-md w-8 h-8 flex items-center justify-center bg-white rounded-full border-2 border-[#C5A059]">
+            <Heart size={16} fill="#C5A059" />
           </div>
         </div>
 
@@ -96,7 +96,7 @@ export default function TimelineSection({ events }) {
               className="relative"
             >
               <div className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border border-white border-l-4 border-l-[#d4af37] hover:-translate-y-1 transition-transform duration-300">
-                <span className="inline-block px-3 py-1 bg-amber-50 text-[#d4af37] text-sm font-semibold tracking-wider rounded-full mb-3 uppercase">
+                <span className="inline-block px-3 py-1 bg-amber-50 text-[#8B1C1C] text-sm font-semibold tracking-wider rounded-full mb-3 uppercase">
                   {event.time} | {event.date}
                 </span>
                 <h3 className="text-2xl md:text-3xl font-serif text-gray-800 mb-2">{event.name}</h3>
@@ -106,7 +106,7 @@ export default function TimelineSection({ events }) {
                     href={event.mapUrl} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="inline-block mt-4 text-sm font-medium text-[#d4af37] hover:text-amber-700 underline underline-offset-4 decoration-amber-300 transition-colors"
+                    className="inline-block mt-4 text-sm font-medium text-[#8B1C1C] hover:text-amber-700 underline underline-offset-4 decoration-amber-300 transition-colors"
                   >
                     Xem bản đồ đường đi &rarr;
                   </a>

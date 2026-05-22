@@ -49,7 +49,7 @@ export default function HeroSection({ name, role, side }) {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex flex-col md:flex-row bg-[#FAF8F5]">
+    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex flex-col md:flex-row bg-[#F9F6F0]">
       {/* Lớp nền Parallax / Ảnh chính (80% on desktop) */}
       <div className="relative w-full md:w-4/5 h-[60vh] md:h-full overflow-hidden">
         <div ref={bgRef} className="absolute inset-0 w-full h-[120%] -top-[10%] z-0">
@@ -67,29 +67,29 @@ export default function HeroSection({ name, role, side }) {
       </div>
 
       {/* Cột 20% bên phải chứa Tên & Save The Date (chồng lên trên ở mobile, cạnh nhau ở desktop) */}
-      <div className="relative md:w-1/5 w-full py-12 md:py-0 md:h-full z-20 flex flex-col items-center justify-center md:border-l border-[#d4af37]/20 bg-white/60 backdrop-blur-xl md:backdrop-blur-md">
+      <div className="relative md:w-1/5 w-full py-12 md:py-0 md:h-full z-20 flex flex-col items-center justify-center md:border-l border-[#C5A059]/20 bg-white/60 backdrop-blur-xl md:backdrop-blur-md">
         
         {/* Tên Cô Dâu Chú Rể */}
         <div className="text-center px-4 mb-8">
-          <p className="text-xs md:text-[10px] lg:text-xs tracking-[0.2em] uppercase mb-4 opacity-90 font-semibold text-[#d4af37]">
+          <p className="text-xs md:text-[10px] lg:text-xs tracking-[0.2em] uppercase mb-4 opacity-90 font-semibold text-[#8B1C1C]">
             Tân Lang & Tân Nương
           </p>
           
-          <h1 className="text-6xl md:text-5xl lg:text-6xl font-calligraphy text-[#d4af37] leading-[1.2] flex flex-col items-center">
+          <h1 className="text-6xl md:text-5xl lg:text-6xl font-calligraphy text-[#8B1C1C] leading-[1.2] flex flex-col items-center">
             <span>{leftName}</span>
             <span className="text-4xl md:text-3xl lg:text-4xl my-2 font-light">&</span>
             <span>{rightName}</span>
           </h1>
 
           <svg className="w-40 md:w-32 lg:w-48 h-10 mt-2 mx-auto" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path ref={pathRef} d="M10,80 Q100,-20 200,60 T380,50" stroke="#d4af37" strokeWidth="4" strokeLinecap="round" />
+            <path ref={pathRef} d="M10,80 Q100,-20 200,60 T380,50" stroke="#C5A059" strokeWidth="4" strokeLinecap="round" />
           </svg>
         </div>
 
         {/* Save The Date */}
         <div className="text-center px-6 mt-4">
           <p className="mb-2 text-gray-500 uppercase tracking-[0.2em] text-[10px] md:text-[9px] lg:text-[10px] font-semibold">Save the date</p>
-          <div className="w-12 h-[1px] bg-[#d4af37] mx-auto mb-4" />
+          <div className="w-12 h-[1px] bg-[#C5A059] mx-auto mb-4" />
           <p className="font-serif text-3xl md:text-2xl lg:text-3xl text-gray-800 mb-2">
             {data.ceremony.dateSolar}
           </p>

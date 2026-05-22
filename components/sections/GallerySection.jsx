@@ -35,11 +35,11 @@ export default function GallerySection() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative w-full h-screen bg-[#FAF8F5] z-10 overflow-hidden border-t border-gray-100">
+    <section ref={containerRef} className="relative w-full h-screen bg-[#F9F6F0] z-10 overflow-hidden border-t border-gray-100">
       
       {/* Title */}
       <div className="absolute top-16 md:top-24 left-0 w-full z-20 pointer-events-none text-center">
-        <p className="text-xs tracking-[0.3em] text-[#d4af37] font-semibold uppercase mb-4">Khoảnh Khắc</p>
+        <p className="text-xs tracking-[0.3em] text-[#8B1C1C] font-semibold uppercase mb-4">Khoảnh Khắc</p>
         <h2 className="text-4xl md:text-5xl font-serif text-gray-800 drop-shadow-sm">Our Journey</h2>
       </div>
 

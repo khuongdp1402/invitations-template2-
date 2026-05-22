@@ -49,7 +49,7 @@ export default function CalendarSection() {
       <div className="max-w-md mx-auto bg-white/60 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white">
         <div className="text-center mb-8">
           <p className="text-sm tracking-[0.2em] uppercase text-gray-500 mb-2">Save the Date</p>
-          <h2 className="text-4xl font-serif text-[#d4af37]">Tháng 6 . 2026</h2>
+          <h2 className="text-4xl font-serif text-[#8B1C1C]">Tháng 6 . 2026</h2>
         </div>
 
         {/* Lưới Lịch */}
@@ -86,7 +86,7 @@ export default function CalendarSection() {
                     <path 
                       ref={circleRef}
                       d="M 20 25 C 20 5, 80 5, 80 25 C 80 45, 20 45, 20 25 Z" 
-                      stroke="#d4af37" 
+                      stroke="#C5A059" 
                       strokeWidth="2"
                       strokeLinecap="round"
                     />

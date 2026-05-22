@@ -46,7 +46,7 @@ export default function DraggableGallerySection() {
     <section ref={containerRef} className="relative w-full h-screen bg-[#e8e4db] z-10 overflow-hidden border-t border-white/50 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing">
       
       <div className="absolute top-16 md:top-24 left-0 w-full z-0 pointer-events-none text-center">
-        <p className="text-xs tracking-[0.3em] text-[#d4af37] font-semibold uppercase mb-4">Lưu Giữ</p>
+        <p className="text-xs tracking-[0.3em] text-[#8B1C1C] font-semibold uppercase mb-4">Lưu Giữ</p>
         <h2 className="text-4xl md:text-5xl font-serif text-gray-800 drop-shadow-sm">Scrapbook</h2>
         <p className="text-sm text-gray-500 mt-4 italic font-serif">Kéo thả các bức ảnh để xem</p>
       </div>

@@ -97,7 +97,7 @@ export default function MouseTrailGallerySection() {
     <section ref={containerRef} className="relative w-full h-[80vh] md:h-screen bg-[#111] z-10 overflow-hidden border-t border-gray-900 cursor-crosshair">
       
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full z-0 pointer-events-none text-center">
-        <p className="text-xs tracking-[0.3em] text-[#d4af37] font-semibold uppercase mb-4">Phép Màu</p>
+        <p className="text-xs tracking-[0.3em] text-[#8B1C1C] font-semibold uppercase mb-4">Phép Màu</p>
         <h2 className="text-4xl md:text-5xl font-serif text-white drop-shadow-md">Magic Touches</h2>
         <p className="text-sm text-gray-400 mt-4 italic font-serif max-w-sm mx-auto px-4">Hãy lướt chạm màn hình để khám phá những mảnh ghép bí mật</p>
       </div>

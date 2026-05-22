@@ -53,7 +53,7 @@ export default function HandwritingText() {
         <path 
           ref={pathRef}
           d="M 50 100 C 50 20, 150 20, 150 100 C 150 150, 250 150, 250 80 C 250 10, 350 10, 350 100" 
-          stroke="#d4af37" 
+          stroke="#C5A059" 
           strokeWidth="4" 
           strokeLinecap="round" 
           strokeLinejoin="round"

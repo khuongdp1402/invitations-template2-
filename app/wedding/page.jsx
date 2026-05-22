@@ -78,7 +78,7 @@ function WeddingContent() {
       <MouseTrailGallerySection />
 
       {/* 10. The Color Burst Transition */}
-      <div className="relative z-10 bg-[#fdfcf0] pt-20 pb-10 border-t border-gray-100">
+      <div className="relative z-10 bg-[#F9F6F0] pt-20 pb-10 border-t border-gray-100">
         <ColorBurstImage />
       </div>
 

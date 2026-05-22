@@ -50,7 +50,7 @@ export default function RsvpSection({ name }) {
     <section className="py-24 px-4 relative z-10">
       <div className="max-w-xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-serif text-[#d4af37] mb-2">Phúc Đáp</h2>
+          <h2 className="text-4xl font-serif text-[#8B1C1C] mb-2">Phúc Đáp</h2>
           <p className="text-gray-500 font-light">Sự hiện diện của bạn là niềm vinh hạnh cho gia đình chúng tôi</p>
         </div>
 
@@ -133,7 +133,7 @@ export default function RsvpSection({ name }) {
 
             <button 
               type="submit"
-              className="w-full py-3 bg-[#d4af37] hover:bg-amber-500 text-white font-semibold rounded-md shadow-lg shadow-amber-200 transition-all active:scale-95 uppercase tracking-wider"
+              className="w-full py-3 bg-[#C5A059] hover:bg-amber-500 text-white font-semibold rounded-md shadow-lg shadow-amber-200 transition-all active:scale-95 uppercase tracking-wider"
             >
               Gửi Phản Hồi
             </button>

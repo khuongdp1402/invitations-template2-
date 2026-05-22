@@ -52,7 +52,7 @@ export default function FloatingMusicPlayer() {
       
       <button 
         onClick={togglePlay}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-[#d4af37] focus:outline-none hover:scale-105 transition-transform"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-[#C5A059] focus:outline-none hover:scale-105 transition-transform"
         aria-label="Toggle Music"
       >
         <div className={`w-10 h-10 rounded-full border border-gray-200 bg-[radial-gradient(circle,_#333_40%,_#111_100%)] flex items-center justify-center relative overflow-hidden ${isPlaying ? 'animate-[spin_4s_linear_infinite]' : ''}`}>
@@ -69,7 +69,7 @@ export default function FloatingMusicPlayer() {
         
         {/* Bong bóng nốt nhạc bay lên khi đang play */}
         {isPlaying && (
-          <div className="absolute -top-4 -right-2 text-[#d4af37] animate-bounce">
+          <div className="absolute -top-4 -right-2 text-[#8B1C1C] animate-bounce">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 18V5l12-2v13M9 9l12-2M9 18a3 3 0 11-6 0 3 3 0 016 0zm12-2a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
