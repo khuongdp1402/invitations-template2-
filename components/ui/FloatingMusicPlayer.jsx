@@ -35,7 +35,6 @@ export default function FloatingMusicPlayer() {
       } else {
         audioRef.current.play();
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -45,7 +44,10 @@ export default function FloatingMusicPlayer() {
         ref={audioRef} 
         loop 
         preload="auto" 
+        autoPlay
         src="/Marry You.mp3" 
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
       />
       
       <button 
