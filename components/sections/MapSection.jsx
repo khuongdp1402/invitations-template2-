@@ -4,10 +4,10 @@ import React from 'react';
 
 export default function MapSection() {
   return (
-    <section className="py-20 bg-gray-50 relative z-10 border-t border-gray-100">
+    <section className="py-20 bg-gray-50 relative z-10 border-t border-gray-700">
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h3 className="text-2xl font-serif text-gray-800 mb-4">Hướng dẫn đường đi</h3>
-        <p className="text-gray-600 mb-8 max-w-lg mx-auto">
+        <h3 className="text-2xl font-serif text-gray-100 mb-4">Hướng dẫn đường đi</h3>
+        <p className="text-gray-300 mb-8 max-w-lg mx-auto">
           Để thuận tiện cho việc di chuyển, quý khách có thể xem bản đồ hướng dẫn đường đi chi tiết bằng Google Maps.
         </p>
         

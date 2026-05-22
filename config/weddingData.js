@@ -48,7 +48,7 @@ export const weddingData = {
   nhatrai: {
     meta: {
       title: "Thiệp Cưới Tân Hôn - Phú Khương & Cẩm Hiền",
-      themeColor: "#F9F6F0"
+      themeColor: "#0A1128"
     },
     parents: {
       father: "Đỗ Phú Nhẫn",
@@ -79,7 +79,7 @@ export const weddingData = {
   nhagai: {
     meta: {
       title: "Thiệp Cưới Vu Quy - Cẩm Hiền & Phú Khương",
-      themeColor: "#F9F6F0"
+      themeColor: "#0A1128"
     },
     parents: {
       father: "Hoàng Đình Du",

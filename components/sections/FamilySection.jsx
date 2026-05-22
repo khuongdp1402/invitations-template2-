@@ -34,7 +34,7 @@ export default function FamilySection({ side }) {
   const rightPerson = getPersonData(order[1]);
 
   return (
-    <section className="py-24 px-4 relative z-10 bg-[#F9F6F0]">
+    <section className="py-24 px-4 relative z-10 bg-[#0A1128]">
       <div className="max-w-4xl mx-auto">
         
         {/* Lưới 2 họ */}
@@ -43,14 +43,14 @@ export default function FamilySection({ side }) {
           {/* Cột Trái */}
           <div className="space-y-6 relative">
             <div className="flex flex-col items-center">
-              <h3 className="text-xs tracking-[0.3em] text-[#8B1C1C] font-semibold uppercase mb-6">{leftPerson.label}</h3>
-              <p className="text-gray-700 font-serif text-lg mb-1">Ông {leftPerson.father}</p>
-              <p className="text-gray-700 font-serif text-lg">Bà {leftPerson.mother}</p>
+              <h3 className="text-xs tracking-[0.3em] text-[#E5D3B3] font-semibold uppercase mb-6">{leftPerson.label}</h3>
+              <p className="text-gray-200 font-serif text-lg mb-1">Ông {leftPerson.father}</p>
+              <p className="text-gray-200 font-serif text-lg">Bà {leftPerson.mother}</p>
             </div>
             
             <div className="mt-8">
               <h2 className="text-5xl md:text-6xl font-calligraphy text-[#7a1f24] mb-2">{leftPerson.name}</h2>
-              <p className="text-xs tracking-[0.2em] text-gray-500 uppercase">{leftPerson.title}</p>
+              <p className="text-xs tracking-[0.2em] text-gray-400 uppercase">{leftPerson.title}</p>
             </div>
 
             {/* Dấu phân cách nhỏ (chỉ hiện trên Mobile) */}
@@ -63,14 +63,14 @@ export default function FamilySection({ side }) {
           {/* Cột Phải */}
           <div className="space-y-6">
             <div className="flex flex-col items-center">
-              <h3 className="text-xs tracking-[0.3em] text-[#8B1C1C] font-semibold uppercase mb-6">{rightPerson.label}</h3>
-              <p className="text-gray-700 font-serif text-lg mb-1">Ông {rightPerson.father}</p>
-              <p className="text-gray-700 font-serif text-lg">Bà {rightPerson.mother}</p>
+              <h3 className="text-xs tracking-[0.3em] text-[#E5D3B3] font-semibold uppercase mb-6">{rightPerson.label}</h3>
+              <p className="text-gray-200 font-serif text-lg mb-1">Ông {rightPerson.father}</p>
+              <p className="text-gray-200 font-serif text-lg">Bà {rightPerson.mother}</p>
             </div>
             
             <div className="mt-8">
               <h2 className="text-5xl md:text-6xl font-calligraphy text-[#7a1f24] mb-2">{rightPerson.name}</h2>
-              <p className="text-xs tracking-[0.2em] text-gray-500 uppercase">{rightPerson.title}</p>
+              <p className="text-xs tracking-[0.2em] text-gray-400 uppercase">{rightPerson.title}</p>
             </div>
           </div>
 
@@ -93,12 +93,12 @@ export default function FamilySection({ side }) {
             )}
           </div>
 
-          <p className="text-xl md:text-2xl font-serif text-gray-800 mb-2">{data.ceremony.dateSolar}</p>
-          <p className="text-sm text-gray-500 font-light italic mb-8">Nhằm ngày {data.ceremony.dateLunar}</p>
+          <p className="text-xl md:text-2xl font-serif text-gray-100 mb-2">{data.ceremony.dateSolar}</p>
+          <p className="text-sm text-gray-400 font-light italic mb-8">Nhằm ngày {data.ceremony.dateLunar}</p>
 
-          <p className="text-xs tracking-[0.3em] text-[#8B1C1C] font-semibold uppercase mb-4">Địa điểm</p>
-          <p className="text-xl font-serif text-gray-800 mb-2">{data.party.title}</p>
-          <p className="text-sm text-gray-600 font-light">{data.ceremony.address}</p>
+          <p className="text-xs tracking-[0.3em] text-[#E5D3B3] font-semibold uppercase mb-4">Địa điểm</p>
+          <p className="text-xl font-serif text-gray-100 mb-2">{data.party.title}</p>
+          <p className="text-sm text-gray-300 font-light">{data.ceremony.address}</p>
         </div>
 
       </div>

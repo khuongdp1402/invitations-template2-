@@ -5,15 +5,15 @@ export default function SplashScreen() {
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#fdfbf7] text-[#3e3e3e]">
       {/* Decorative SVG or CSS animation for "walking together" */}
       <div className="relative w-32 h-32 mb-8 flex items-center justify-center">
-        <div className="absolute w-24 h-24 border border-[#C5A059] rounded-full animate-ping opacity-20"></div>
-        <div className="absolute w-16 h-16 border-2 border-[#C5A059] rounded-full opacity-50"></div>
-        <div className="text-2xl font-serif text-[#8B1C1C]">K & H</div>
+        <div className="absolute w-24 h-24 border border-[#D4AF37] rounded-full animate-ping opacity-20"></div>
+        <div className="absolute w-16 h-16 border-2 border-[#D4AF37] rounded-full opacity-50"></div>
+        <div className="text-2xl font-serif text-[#E5D3B3]">K & H</div>
       </div>
       
       {/* Loading Progress Bar Container */}
-      <div className="w-64 h-1 bg-gray-200 rounded-full overflow-hidden">
+      <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
         {/* Indeterminate loading bar for now since it's just Suspense fallback */}
-        <div className="h-full bg-[#C5A059] animate-[pulse_1.5s_ease-in-out_infinite] w-1/2 rounded-full mx-auto"></div>
+        <div className="h-full bg-[#D4AF37] animate-[pulse_1.5s_ease-in-out_infinite] w-1/2 rounded-full mx-auto"></div>
       </div>
       
       <p className="mt-4 text-sm font-light tracking-widest uppercase">Đang mở thiệp...</p>

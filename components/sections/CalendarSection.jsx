@@ -46,10 +46,10 @@ export default function CalendarSection() {
 
   return (
     <section ref={containerRef} className="py-24 px-4 relative z-10">
-      <div className="max-w-md mx-auto bg-white/60 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white">
+      <div className="max-w-md mx-auto bg-black/40 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white">
         <div className="text-center mb-8">
-          <p className="text-sm tracking-[0.2em] uppercase text-gray-500 mb-2">Save the Date</p>
-          <h2 className="text-4xl font-serif text-[#8B1C1C]">Tháng 6 . 2026</h2>
+          <p className="text-sm tracking-[0.2em] uppercase text-gray-400 mb-2">Save the Date</p>
+          <h2 className="text-4xl font-serif text-[#E5D3B3]">Tháng 6 . 2026</h2>
         </div>
 
         {/* Lưới Lịch */}
@@ -70,7 +70,7 @@ export default function CalendarSection() {
               <div 
                 key={day} 
                 className={`p-2 relative flex items-center justify-center text-sm md:text-base font-medium
-                  ${isWeddingDay ? 'text-gray-900' : 'text-gray-500'}
+                  ${isWeddingDay ? 'text-gray-900' : 'text-gray-400'}
                 `}
               >
                 {day}
@@ -86,7 +86,7 @@ export default function CalendarSection() {
                     <path 
                       ref={circleRef}
                       d="M 20 25 C 20 5, 80 5, 80 25 C 80 45, 20 45, 20 25 Z" 
-                      stroke="#C5A059" 
+                      stroke="#D4AF37" 
                       strokeWidth="2"
                       strokeLinecap="round"
                     />
@@ -98,8 +98,8 @@ export default function CalendarSection() {
         </div>
         
         <div className="text-center mt-8 space-y-2">
-          <p className="font-serif text-lg text-gray-800">Lễ Tân Hôn & Vu Quy</p>
-          <p className="text-sm font-light text-gray-500 tracking-wide uppercase">06 & 07 Tháng 06 Năm 2026</p>
+          <p className="font-serif text-lg text-gray-100">Lễ Tân Hôn & Vu Quy</p>
+          <p className="text-sm font-light text-gray-400 tracking-wide uppercase">06 & 07 Tháng 06 Năm 2026</p>
         </div>
       </div>
     </section>

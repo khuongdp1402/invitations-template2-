@@ -46,19 +46,19 @@ export default function DraggableGallerySection() {
     <section ref={containerRef} className="relative w-full h-screen bg-[#e8e4db] z-10 overflow-hidden border-t border-white/50 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing">
       
       <div className="absolute top-16 md:top-24 left-0 w-full z-0 pointer-events-none text-center">
-        <p className="text-xs tracking-[0.3em] text-[#8B1C1C] font-semibold uppercase mb-4">Lưu Giữ</p>
-        <h2 className="text-4xl md:text-5xl font-serif text-gray-800 drop-shadow-sm">Scrapbook</h2>
-        <p className="text-sm text-gray-500 mt-4 italic font-serif">Kéo thả các bức ảnh để xem</p>
+        <p className="text-xs tracking-[0.3em] text-[#E5D3B3] font-semibold uppercase mb-4">Lưu Giữ</p>
+        <h2 className="text-4xl md:text-5xl font-serif text-gray-100 drop-shadow-sm">Scrapbook</h2>
+        <p className="text-sm text-gray-400 mt-4 italic font-serif">Kéo thả các bức ảnh để xem</p>
       </div>
 
       <div className="relative w-full h-full max-w-4xl flex items-center justify-center pointer-events-auto">
         {IMG_URLS.map((url, i) => (
           <div 
             key={i} 
-            className="polaroid-card absolute w-[60vw] md:w-[25vw] aspect-[3/4] bg-white p-3 pb-12 shadow-xl rounded-sm will-change-transform"
+            className="polaroid-card absolute w-[60vw] md:w-[25vw] aspect-[3/4] bg-[#0A1128] p-3 pb-12 shadow-xl rounded-sm will-change-transform"
             style={{ zIndex: i + 1 }}
           >
-            <div className="relative w-full h-full bg-gray-200 overflow-hidden border border-gray-100">
+            <div className="relative w-full h-full bg-gray-800 overflow-hidden border border-gray-700">
               <Image 
                 src={getDirectImageUrl(url)} 
                 alt={`Scrapbook ${i}`} 
