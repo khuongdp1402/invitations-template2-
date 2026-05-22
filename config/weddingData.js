@@ -1,30 +1,30 @@
 export const weddingData = {
   // Array of events for TimelineSection.jsx
   events: [
-    { 
-      id: 'vuquy', 
-      name: 'Lễ Vu Quy', 
-      date: '07/06/2026', 
+    {
+      id: 'vuquy',
+      name: 'Lễ Vu Quy',
+      date: '07/06/2026',
       time: '09:00 AM',
-      location: "Thôn 1b, xã Ea M'Droh, tỉnh Đắk Lắk", 
-      side: 'nhagai' 
+      location: "Thôn 1b, xã Ea M'Droh, tỉnh Đắk Lắk",
+      side: 'nhagai'
     },
-    { 
-      id: 'tanhon', 
-      name: 'Lễ Tân Hôn', 
-      date: '09/06/2026', 
+    {
+      id: 'tanhon',
+      name: 'Lễ Tân Hôn',
+      date: '09/06/2026',
       time: '09:00 AM',
-      location: '195, thôn 4a, xã Quảng Phú, tỉnh Đắk Lắk', 
-      side: 'nhatrai' 
+      location: '195, thôn 4a, xã Quảng Phú, tỉnh Đắk Lắk',
+      side: 'nhatrai'
     }
   ],
 
   // Link ảnh cho phần Gallery. Bạn có thể chép link Google Drive (link chia sẻ) vào đây.
   // Hệ thống sẽ tự động convert link Drive thành link ảnh trực tiếp để hiển thị.
   gallery: [
-    "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
+    "https://drive.google.com/file/d/1Jt49T8A1yxChJQyZwNUJ4ps4f3MFyii7/view?usp=sharing?q=80&w=800&auto=format&fit=crop",
+    "https://drive.google.com/file/d/1iIN6qtgrgESU5p_ivwgWwnExkSr2P-iI/view?usp=sharing?q=80&w=800&auto=format&fit=crop",
+    "https://drive.google.com/file/d/1SePG4MiRIyFZ8ThR7Jcrjx9kqDgdfFxU/view?usp=sharing?q=80&w=800&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop"
@@ -57,7 +57,7 @@ export const weddingData = {
     },
     // Hiển thị ưu tiên thứ tự Tên Chú Rể trước cho Mode Nhà Trai
     displayOrder: ["groom", "bride"],
-    
+
     // Thông tin buổi lễ chính
     ceremony: {
       type: "Lễ Tân Hôn",
@@ -66,13 +66,13 @@ export const weddingData = {
       time: "09:00",
       address: "195, thôn 4a, xã Quảng Phú, tỉnh Đắk Lắk"
     },
-    
+
     // Thông tin tiệc cưới để khách nhà trai đến dự
     party: {
       title: "Tiệc Cưới Nhà Trai",
       time: "11:00 ngày 09/06/2026",
       address: "TƯ GIA NHÀ TRAI - 195, thôn 4a, xã Quảng Phú, tỉnh Đắk Lắk",
-      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!..." 
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!..."
     }
   },
 
@@ -88,7 +88,7 @@ export const weddingData = {
     },
     // Hiển thị ưu tiên thứ tự Tên Cô Dâu trước cho Mode Nhà Gái
     displayOrder: ["bride", "groom"],
-    
+
     // Thông tin buổi lễ chính
     ceremony: {
       type: "Lễ Vu Quy",
@@ -97,7 +97,7 @@ export const weddingData = {
       time: "09:00",
       address: "Thôn 1b, xã Ea M'Droh, tỉnh Đắk Lắk"
     },
-    
+
     // Thông tin tiệc cưới để khách nhà gái đến dự
     party: {
       title: "Tiệc Cưới Nhà Gái",

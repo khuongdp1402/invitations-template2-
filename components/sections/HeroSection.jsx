@@ -51,7 +51,7 @@ export default function HeroSection({ name, role, side }) {
   return (
     <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex flex-col md:flex-row bg-[#FAF8F5]">
       {/* Lớp nền Parallax / Ảnh chính (80% on desktop) */}
-      <div className="relative w-full md:w-4/5 h-[70vh] md:h-full overflow-hidden">
+      <div className="relative w-full md:w-4/5 h-[60vh] md:h-full overflow-hidden">
         <div ref={bgRef} className="absolute inset-0 w-full h-[120%] -top-[10%] z-0">
           <Image 
             src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1920&auto=format&fit=crop"
@@ -62,35 +62,38 @@ export default function HeroSection({ name, role, side }) {
             unoptimized
           />
           {/* Lớp mờ rất nhẹ */}
-          <div className="absolute inset-0 bg-black/10" />
-        </div>
-        
-        {/* Nội dung Tên */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center md:items-start justify-center text-center md:text-left px-8 text-white w-full h-full md:pl-20">
-          <p className="text-sm md:text-base tracking-[0.3em] uppercase mb-4 opacity-90 drop-shadow-md font-light text-[#d4af37]">
-            Tân Lang & Tân Nương
-          </p>
-          
-          <h1 className="text-7xl md:text-9xl font-calligraphy mb-2 drop-shadow-lg text-[#d4af37] leading-tight">
-            {leftName} <br className="md:hidden" /> <span className="hidden md:inline"> & </span> {rightName}
-          </h1>
-
-          {/* SVG Handwriting Cursive stroke */}
-          <svg className="w-64 md:w-96 h-16 mt-2" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path ref={pathRef} d="M10,80 Q100,-20 200,60 T380,50" stroke="#d4af37" strokeWidth="4" strokeLinecap="round" className="drop-shadow-md" />
-          </svg>
+          <div className="absolute inset-0 bg-black/5" />
         </div>
       </div>
 
-      {/* Cột 20% bên phải chứa Save The Date (chồng lên trên ở mobile, cạnh nhau ở desktop) */}
-      <div className="relative md:w-1/5 w-full h-[30vh] md:h-full z-20 flex items-center justify-center md:border-l border-[#d4af37]/20 bg-white/60 backdrop-blur-xl md:backdrop-blur-md">
-        <div className="text-center px-6 py-8">
-          <p className="mb-2 text-gray-500 uppercase tracking-widest text-xs font-semibold">Save the date</p>
+      {/* Cột 20% bên phải chứa Tên & Save The Date (chồng lên trên ở mobile, cạnh nhau ở desktop) */}
+      <div className="relative md:w-1/5 w-full py-12 md:py-0 md:h-full z-20 flex flex-col items-center justify-center md:border-l border-[#d4af37]/20 bg-white/60 backdrop-blur-xl md:backdrop-blur-md">
+        
+        {/* Tên Cô Dâu Chú Rể */}
+        <div className="text-center px-4 mb-8">
+          <p className="text-xs md:text-[10px] lg:text-xs tracking-[0.2em] uppercase mb-4 opacity-90 font-semibold text-[#d4af37]">
+            Tân Lang & Tân Nương
+          </p>
+          
+          <h1 className="text-6xl md:text-5xl lg:text-6xl font-calligraphy text-[#d4af37] leading-[1.2] flex flex-col items-center">
+            <span>{leftName}</span>
+            <span className="text-4xl md:text-3xl lg:text-4xl my-2 font-light">&</span>
+            <span>{rightName}</span>
+          </h1>
+
+          <svg className="w-40 md:w-32 lg:w-48 h-10 mt-2 mx-auto" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path ref={pathRef} d="M10,80 Q100,-20 200,60 T380,50" stroke="#d4af37" strokeWidth="4" strokeLinecap="round" />
+          </svg>
+        </div>
+
+        {/* Save The Date */}
+        <div className="text-center px-6 mt-4">
+          <p className="mb-2 text-gray-500 uppercase tracking-[0.2em] text-[10px] md:text-[9px] lg:text-[10px] font-semibold">Save the date</p>
           <div className="w-12 h-[1px] bg-[#d4af37] mx-auto mb-4" />
-          <p className="font-serif text-3xl md:text-4xl text-gray-800 mb-2">
+          <p className="font-serif text-3xl md:text-2xl lg:text-3xl text-gray-800 mb-2">
             {data.ceremony.dateSolar}
           </p>
-          <p className="text-xs text-gray-500">Nhằm ngày {data.ceremony.dateLunar}</p>
+          <p className="text-[11px] md:text-[10px] lg:text-[11px] text-gray-500">Nhằm ngày {data.ceremony.dateLunar}</p>
         </div>
       </div>
     </section>
