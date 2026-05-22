@@ -22,12 +22,12 @@ export const weddingData = {
   // Link ảnh cho phần Gallery. Bạn có thể chép link Google Drive (link chia sẻ) vào đây.
   // Hệ thống sẽ tự động convert link Drive thành link ảnh trực tiếp để hiển thị.
   gallery: [
-    "https://drive.google.com/file/d/1Jt49T8A1yxChJQyZwNUJ4ps4f3MFyii7/view?usp=sharing?q=80&w=800&auto=format&fit=crop",
-    "https://drive.google.com/file/d/1iIN6qtgrgESU5p_ivwgWwnExkSr2P-iI/view?usp=sharing?q=80&w=800&auto=format&fit=crop",
-    "https://drive.google.com/file/d/1SePG4MiRIyFZ8ThR7Jcrjx9kqDgdfFxU/view?usp=sharing?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop"
+    "/z7849785668787_545076eb7332d020812634ff21635017.jpg",
+    "/z7849785668787_545076eb7332d020812634ff21635017.jpg",
+    "/z7849785668787_545076eb7332d020812634ff21635017.jpg",
+    "/z7849785668787_545076eb7332d020812634ff21635017.jpg",
+    "/z7849785668787_545076eb7332d020812634ff21635017.jpg",
+    "/z7849785668787_545076eb7332d020812634ff21635017.jpg"
   ],
 
   // Thông tin dùng chung cho cả 2 bên (Tránh lặp code)

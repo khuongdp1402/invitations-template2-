@@ -54,7 +54,7 @@ export default function HeroSection({ name, role, side }) {
       <div className="relative w-full md:w-4/5 h-[60vh] md:h-full overflow-hidden">
         <div ref={bgRef} className="absolute inset-0 w-full h-[120%] -top-[10%] z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1920&auto=format&fit=crop"
+            src="/z7849785668787_545076eb7332d020812634ff21635017.jpg"
             alt="Wedding Hero"
             fill
             className="object-cover object-[left_center]"
