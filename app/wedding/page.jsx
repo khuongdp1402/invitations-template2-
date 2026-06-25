@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import SplashScreen from '@/components/ui/SplashScreen';
 import { weddingData } from '@/config/weddingData';
@@ -29,26 +29,42 @@ function WeddingContent() {
   const side = searchParams.get('side');
   const name = searchParams.get('name');
   const role = searchParams.get('role');
+  const containerRef = useRef(null);
 
-  // Bỏ logic sortedEvents cũ vì giờ sẽ dùng fix cứng trong TimelineSection
+  useGSAP(() => {
+    // Dynamic Color-Blocking
+    const sections = gsap.utils.toArray('.color-section');
+    sections.forEach((section) => {
+      const color = section.getAttribute('data-color');
+      if (color) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 50%",
+          end: "bottom 50%",
+          onEnter: () => gsap.to(containerRef.current, { backgroundColor: color, duration: 1, ease: "power2.out" }),
+          onEnterBack: () => gsap.to(containerRef.current, { backgroundColor: color, duration: 1, ease: "power2.out" }),
+        });
+      }
+    });
+  }, { scope: containerRef });
 
   return (
-    <div className="min-h-screen bg-transparent text-gray-900 font-sans relative">
+    <div ref={containerRef} className="min-h-screen text-gray-900 font-sans relative transition-colors duration-1000" style={{ backgroundColor: "#800020" }}>
       <FloatingMusicPlayer />
 
       {/* 0. Envelope Welcome Screen */}
       <EnvelopeWelcome guestName={name} side={side} />
 
       {/* 1. Hero Section */}
-      <HeroSection name={name} role={role} side={side} />
+      <div className="color-section" data-color="#800020">
+        <HeroSection name={name} role={role} side={side} />
+      </div>
 
       {/* 2. The Launch Trigger (Ẩn) */}
       <LaunchTrigger />
 
-
-
       {/* 3. Lịch & Ảnh Sương Mù (2 cột) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-center gap-10">
+      <div className="color-section relative z-10 max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-center gap-10" data-color="#FFF5E1">
         <div className="w-full md:w-1/2 flex justify-end">
           <CalendarSection side={side} />
         </div>
@@ -60,28 +76,44 @@ function WeddingContent() {
       </div>
 
       {/* 4. Gallery 1: Khoảnh Khắc */}
-      <GallerySection />
+      <div className="color-section" data-color="#F5F5F5">
+        <GallerySection />
+      </div>
 
       {/* 5. Family Section (Nhà Trai - Nhà Gái) */}
-      <FamilySection side={side} />
+      <div className="color-section" data-color="#FFF5E1">
+        <FamilySection side={side} />
+      </div>
 
       {/* 6. Trân Trọng Kính Mời */}
-      <InvitationWords name={name} role={role} />
+      <div className="color-section" data-color="#FDF5E6">
+        <InvitationWords name={name} role={role} />
+      </div>
 
-      {/* 7. Gallery 2: Scrapbook */}
-      <DraggableGallerySection />
+      {/* 7. Gallery 2: Scrapbook (Candid Memories) */}
+      <div className="color-section" data-color="#8B7355">
+        <DraggableGallerySection />
+      </div>
 
       {/* 8. Love Timeline */}
-      <TimelineSection side={side} />
+      <div className="color-section" data-color="#F5F5F5">
+        <TimelineSection side={side} />
+      </div>
 
       {/* 9. Gallery 3: Phép Màu */}
-      <MouseTrailGallerySection />
+      <div className="color-section" data-color="#FFF5E1">
+        <MouseTrailGallerySection />
+      </div>
 
       {/* 10. RSVP Form */}
-      <RsvpSection name={name} />
+      <div className="color-section" data-color="#FFFFFF">
+        <RsvpSection name={name} />
+      </div>
 
       {/* 11. Map */}
-      <MapSection />
+      <div className="color-section" data-color="#FDF5E6">
+        <MapSection />
+      </div>
     </div>
   );
 }
