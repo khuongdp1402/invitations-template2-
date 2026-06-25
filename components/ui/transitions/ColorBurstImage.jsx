@@ -45,7 +45,16 @@ export default function ColorBurstImage({
 
   return (
     <div ref={containerRef} className="flex justify-center items-center py-20 px-4">
-      <div className="relative w-full max-w-md aspect-[3/4] rounded-lg overflow-hidden shadow-2xl">
+      {/* Container with clip-path to create an elegant arch shape */}
+      <div 
+        className="relative w-full max-w-md aspect-[3/4] overflow-hidden"
+        style={{
+          clipPath: 'path("M 0 200 Q 0 0 200 0 Q 400 0 400 200 L 400 800 L 0 800 Z")', // Tùy chỉnh path hoặc dùng ellipse nếu responsive
+          // CSS fallback cho clipPath
+          clipPath: 'ellipse(50% 45% at 50% 45%)', 
+          border: '4px solid rgba(255,255,255,0.5)',
+        }}
+      >
         <Image 
           ref={imageRef}
           src={src}
@@ -55,6 +64,7 @@ export default function ColorBurstImage({
           style={{ filter: 'grayscale(100%) blur(10px)', opacity: 0.7 }}
           unoptimized // Tạm thời unoptimized cho ảnh ngoài Unsplash
         />
+        <div className="absolute inset-0 ring-4 ring-white/50 ring-inset rounded-[50%]" />
       </div>
     </div>
   );
