@@ -1,0 +1,49 @@
+# VOLUME 3: Design System & Art Direction
+*(Bộ Gen Thị giác - Khóa chặt biến số thiết kế)*
+
+## 1. MỤC TIÊU (OBJECTIVE)
+Khóa chặt toàn bộ biến số thị giác (Typography, Colors, Spacing). Ngăn chặn tuyệt đối việc AI tự động sáng tạo màu sắc hay khoảng cách ngoài chuẩn mực.
+
+## 2. DESIGN TOKENS (CSS VARIABLES / TAILWIND)
+
+### 2.1. Bảng màu (Color Palette)
+Mọi màu sắc **MUST** được gọi qua Tailwind Classes hoặc CSS Variables.
+- `--color-warm-white`: `#FFF8F0`
+- `--color-burgundy`: `#800020`
+- `--color-beige`: `#F5F5DC`
+- `--color-gold`: `#D4AF37`
+- `--color-text-primary`: `#1A1A1A`
+- `--color-text-secondary`: `#4A4A4A`
+
+### 2.2. Nghệ thuật Typography (Editorial Contrast)
+**MUST** tạo sự tương phản cực gắt giữa Font Serif khổng lồ và Sans-serif siêu nhỏ.
+
+1. **Font Tiêu đề / Trích dẫn (Serif):**
+   - Loại: Playfair Display / Lora (hoặc font serif tương đương).
+   - Kích thước: Khổng lồ (ví dụ `text-[80px] md:text-[120px]`).
+   - Line-height: `leading-none` (hoặc `0.9`).
+   - Tracking: `tracking-tighter`.
+
+2. **Font Phụ đề / Caption (Sans-serif):**
+   - Loại: Inter / Roboto Mono.
+   - Kích thước: Siêu nhỏ nhắn (ví dụ `text-[10px] md:text-[11px]`).
+   - Tracking: Rất rộng (`tracking-widest` hoặc `letter-spacing: 0.2em`).
+   - Casing: TẤT CẢ VIẾT HOA (`uppercase`).
+
+3. **Font Chữ ký (Handwriting):**
+   - Kích thước: `text-[40px] md:text-[60px]`.
+   - Màu sắc: `--color-gold`.
+
+### 2.3. Quy tắc Không gian (Negative Space)
+- **NEVER** sử dụng các đơn vị pixel (`px`) tĩnh cho khoảng cách giữa các Chapter (Section).
+- **MUST** sử dụng `vh` (Viewport Height) kết hợp với `min/max` để tạo cảm giác "chậm lại" và thở (breathing room).
+- Ví dụ Constraint cho padding/margin giữa các Section:
+  ```css
+  /* Thay vì margin-bottom: 100px */
+  margin-bottom: min(30vh, 250px);
+  ```
+
+### 2.4. Khung lưới nhiếp ảnh (Photographic Grid)
+- **NEVER** crop ảnh thành hình vuông cứng nhắc.
+- **MUST** sử dụng tỷ lệ khung hình chuẩn nhiếp ảnh: `aspect-[3/4]` (Portrait), `aspect-[4/3]` (Landscape), hoặc `aspect-[16/9]` (Cinematic).
+- Ảnh trôi nổi **MUST** có viền trắng mỏng (polaroid-style) hoặc bóng đổ (soft shadow `shadow-2xl`) để tách biệt khỏi nền.

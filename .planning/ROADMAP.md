@@ -95,6 +95,36 @@ Plans:
 Plans:
 - [ ] TBD (run /gsd-plan-phase 6 to break down)
 
+### Phase 7: Overhaul wedding invitation website with cinematic, interactive storytelling experience
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 6
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 7 to break down)
+
+### Phase 8: Điều chỉnh toàn bộ website Cinematic Storytelling
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 7
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 8 to break down)
+
 ---
 ## Future Milestones
 - (None yet)
+
+### Phase 08.1: Thực hiện tạo tài liệu WSDD AI-Optimized (INSERTED)
+
+**Goal:** [Urgent work - to be planned]
+**Requirements**: TBD
+**Depends on:** Phase 8
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 08.1 to break down)

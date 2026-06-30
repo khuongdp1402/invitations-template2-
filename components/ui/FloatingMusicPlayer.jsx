@@ -45,7 +45,7 @@ export default function FloatingMusicPlayer() {
         loop 
         preload="auto" 
         autoPlay
-        src="/Marry You.mp3" 
+        src="/Give Me Everything - (Cover by Archer Marsh) [Bridgerton Season 3 (Netflix Series)].mp3" 
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />

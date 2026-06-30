@@ -29,10 +29,10 @@ export default function TimelineSection({ side }) {
 
   // Cố định 4 mốc thời gian, thêm fallback image
   const fixedEvents = [
-    { id: 1, time: '09:00', name: 'Làm lễ', date: dateStr, location: locationStr, image: '/z7849785668787_545076eb7332d020812634ff21635017.jpg' },
-    { id: 2, time: '10:00', name: 'Đón khách', date: dateStr, location: locationStr, image: '/z7849785668787_545076eb7332d020812634ff21635017.jpg' },
-    { id: 3, time: '11:00', name: 'Nhập tiệc - Âm nhạc', date: dateStr, location: locationStr, image: '/z7849785668787_545076eb7332d020812634ff21635017.jpg' },
-    { id: 4, time: '12:00', name: 'Chụp ảnh lưu niệm', date: dateStr, location: locationStr, image: '/z7849785668787_545076eb7332d020812634ff21635017.jpg' },
+    { id: 1, time: '09:00', name: 'Làm lễ', date: dateStr, location: locationStr, image: '/images/z7974179656581_b9e1062c585bedc28ab1c640cfecce11.jpg' },
+    { id: 2, time: '10:00', name: 'Đón khách', date: dateStr, location: locationStr, image: '/images/z7974179663138_96009eccd733980cb3d5f8efaa6711f1.jpg' },
+    { id: 3, time: '11:00', name: 'Nhập tiệc - Âm nhạc', date: dateStr, location: locationStr, image: '/images/z7974179666520_e6e2ccf46662d623ffa969ec32d4431b.jpg' },
+    { id: 4, time: '12:00', name: 'Chụp ảnh lưu niệm', date: dateStr, location: locationStr, image: '/images/z7974179671203_0fe40cf1e0ad9b6d6f2ed64c9246ed34.jpg' },
   ];
 
   useEffect(() => {

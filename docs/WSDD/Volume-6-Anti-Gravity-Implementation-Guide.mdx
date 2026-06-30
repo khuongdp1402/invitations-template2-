@@ -1,0 +1,26 @@
+# VOLUME 6: Anti Gravity Implementation Guide
+*(Cẩm nang Lệnh thực thi - Bản đồ Prompt)*
+
+## 1. MỤC TIÊU (OBJECTIVE)
+Chia nhỏ quá trình code toàn bộ dự án thành các Prompt (Câu lệnh) cực ngắn, mang tính mệnh lệnh. Người dùng (User) sẽ lần lượt copy/paste các Prompt này để nạp cho AI trong quá trình thực thi Phase 8.
+
+## 2. HƯỚNG DẪN THỰC THI CHO USER
+Chạy lần lượt các Prompt dưới đây cho AI. **Không được gộp chung nhiều Prompt** để đảm bảo AI code chi tiết và không bị ảo giác (hallucination).
+
+### Prompt 1: Nền móng & Cấu trúc Dữ liệu
+> "Đọc Volume 3 và Volume 5 trong thư mục `docs/WSDD`. Hãy setup/kiểm tra lại thư viện `Lenis` (Smooth Scroll), Tailwind CSS, và cấu trúc thư mục. Sau đó tạo file `config/weddingData.ts` chuẩn TypeScript dựa theo Volume 5. Chỉ dựng layout khung rỗng, tuyệt đối chưa viết GSAP."
+
+### Prompt 2: Color of Time (Engine Chuyển màu)
+> "Đọc Volume 1 và Volume 2. Tạo một Component độc lập tên là `StoryEngine` hoặc đặt trong `layout.tsx`/`page.tsx`. Xây dựng thẻ div nằm dưới cùng (fixed, -z-10) chịu trách nhiệm nhận giá trị `theme` từ các Section. Thiết lập GSAP ScrollTrigger để mỗi khi cuộn qua một section, màu nền tự động nội suy mượt mà."
+
+### Prompt 3: Chapter 0 (The Wax Seal & Hero)
+> "Đọc Volume 1 (Chương 0) và Volume 4. Thiết kế Hero Section. Áp dụng GSAP để Pin (ghim) màn hình lại. Hiển thị màn hình đen có dòng chữ 'Chạm để bắt đầu'. Lập trình chuỗi sự kiện: Click -> Phát Audio nhạc nền (Fade in) -> Text mờ đi -> Ảnh Hero hiện lên và Zoom (scale 1.15) siêu chậm trong 10s. Kết thúc 10s mới unpin."
+
+### Prompt 4: The Golden Thread (Sợi chỉ định mệnh)
+> "Đọc Volume 1 và Volume 2. Tạo một Component `<GoldenThread />` đứng độc lập. Sử dụng `<svg>` phủ toàn màn hình. Vẽ một đường `<path>` lượn sóng từ trên xuống dưới. Dùng GSAP ScrollTrigger kết hợp `stroke-dasharray` và `stroke-dashoffset` (với `scrub: 1`) để nét vẽ sợi chỉ chạy song song với vị trí cuộn của người dùng."
+
+### Prompt 5: Floating Memories (Parallax Engine)
+> "Đọc Volume 4 và Volume 5. Implement Component `<FloatingGallery />`. Bố trí ảnh phi cấu trúc (dùng `position: absolute` ngẫu nhiên). Gắn thuộc tính `data-speed` cho từng ảnh và áp dụng thuật toán trục Y từ Volume 4. KHÔNG sử dụng Three.js."
+
+### Prompt 6: RSVP Envelope & Cinematic Ending
+> "Đọc Volume 4 và Volume 2. Dựng form RSVP mô phỏng phong thư với 3 trạng thái Đóng -> Mở -> Rút thiệp. Sau đó dựng Ending Section: khi cuộn đến cuối cùng, fade to black màn hình, nhạc fade out, Typewriter text xuất hiện và bắn pháo giấy (canvas-confetti)."

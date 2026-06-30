@@ -1,0 +1,77 @@
+# VOLUME 5: Technical & Data Architecture
+*(Trái tim của Framework - Data dictates UI)*
+
+## 1. MỤC TIÊU (OBJECTIVE)
+Tài liệu này định nghĩa cấu trúc dữ liệu duy nhất (Single Source of Truth) và các chuẩn TypeScript Interfaces bắt buộc cho toàn bộ website. 
+AI **phải** dựa vào cấu trúc dữ liệu này để sinh ra các UI Components tương ứng, tuyệt đối không tự ý thêm bớt trường dữ liệu.
+
+## 2. RÀO CẢN KỸ THUẬT (CONSTRAINTS)
+- **MUST** sử dụng cấu trúc `weddingData` làm Single Source of Truth cho toàn bộ text, hình ảnh, timeline, và logic của website.
+- **NEVER** hardcode các chuỗi văn bản (text strings), đường dẫn hình ảnh (image paths), hoặc cấu hình màu sắc (color codes) trực tiếp vào trong UI Components.
+- **MUST** định nghĩa kiểu dữ liệu chặt chẽ bằng TypeScript (hoặc JSDoc nếu dùng JS) cho mọi Props truyền vào Component.
+- **NEVER** sử dụng Three.js (R3F) để hiển thị một danh sách lớn các hình ảnh (Gallery) vì sẽ gây sụt giảm FPS trên Mobile. Thay vào đó, **MUST** sử dụng DOM HTML/CSS kết hợp `data-speed` của GSAP ScrollTrigger để tạo chiều sâu Parallax.
+- **MUST** bọc toàn bộ ứng dụng bằng thư viện `Lenis` để đồng bộ hóa tốc độ cuộn trang (Smooth Scrolling) và ScrollTrigger.
+
+## 3. CẤU TRÚC DỮ LIỆU CỐT LÕI (CORE DATA SCHEMA)
+
+### 3.1. Interface: StoryChapter (Máy kể chuyện)
+Toàn bộ nội dung website được chia thành các "Chương" (Chapters).
+
+```typescript
+export type LayoutType = 'hero' | 'asymmetric-left' | 'asymmetric-right' | 'grid' | 'fullscreen-quote' | 'timeline' | 'rsvp' | 'map';
+
+export interface StoryChapter {
+  id: string;                 // Mã định danh chương (VD: 'met', 'proposal')
+  year?: string;              // Mốc thời gian (nếu có)
+  title: string;              // Tiêu đề chương
+  theme: string;              // Màu nền chủ đạo (HEX code) - Dùng cho Color Grading Engine nội suy
+  layoutType: LayoutType;     // Loại layout để Component Mapper biết cần render giao diện nào
+  images: string[];           // Mảng đường dẫn hình ảnh
+  quote?: string;             // Câu trích dẫn hoặc nội dung chính
+  parallaxSpeed?: number[];   // Mảng tốc độ trôi (Y-axis) tương ứng với từng ảnh (Dùng cho Floating Memories)
+}
+```
+
+### 3.2. Interface: GuestConfig (Cá nhân hóa)
+Dữ liệu để phân luồng người dùng (dựa trên URL query).
+
+```typescript
+export type GuestSide = 'bride' | 'groom' | 'mutual';
+
+export interface GuestConfig {
+  side: GuestSide;
+  name: string;
+  role: string;
+  invitationMessage: string;
+}
+```
+
+### 3.3. Interface: TheWeddingData (Single Source of Truth)
+
+```typescript
+export interface TheWeddingData {
+  couple: {
+    bride: string;
+    groom: string;
+    weddingDate: string; // ISO String
+  };
+  storyChapters: StoryChapter[];
+  audio: {
+    bgmUrl: string;       // URL nhạc nền
+    autoplay: boolean;
+  };
+  rsvpConfig: {
+    deadline: string;
+    googleFormUrl?: string;
+  };
+}
+```
+
+## 4. LUỒNG THỰC THI (DATA FLOW)
+1. **Khởi tạo:** `app/layout.tsx` đọc URL Params -> Thiết lập `GuestConfig` qua Context/Store.
+2. **Kích hoạt Lenis:** Bọc `<LenisProvider>` ở tầng cao nhất của App.
+3. **Render Chapters:** Component chính (VD: `StoryEngine.tsx`) map qua `weddingData.storyChapters`.
+4. **Color Engine:** Một `<div className="fixed inset-0 -z-10 bg-transition-color"></div>` đứng độc lập. Khi scroll qua mỗi Component con, GSAP sẽ đọc thuộc tính `theme` của chapter đó và `gsap.to()` màu nền tương ứng.
+5. **Component Mapper:** Dựa vào trường `layoutType`, `StoryEngine` sẽ gọi Component tương ứng:
+   - Nếu `layoutType === 'asymmetric-left'`, gọi `<AsymmetricGallery side="left" data={chapter} />`
+   - Nếu `layoutType === 'timeline'`, gọi `<TimelineSection data={chapter} />`

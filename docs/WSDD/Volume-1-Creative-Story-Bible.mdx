@@ -1,0 +1,39 @@
+# VOLUME 1: Creative & Story Bible
+*(Hệ điều hành & Linh hồn - The System Prompt)*
+
+## 1. MỤC TIÊU (OBJECTIVE)
+Định hình "Nhân cách AI" khi code dự án này. Tài liệu này là Core System Prompt ép buộc AI tư duy theo triết lý "Toán học của Cảm xúc".
+
+## 2. THE "NEVER-DO" LIST (RÀO CẢN TUYỆT ĐỐI)
+- **NEVER** sử dụng thanh cuộn mặc định của trình duyệt. **MUST** bọc toàn bộ App bằng `Lenis` (Studio Freight) để kiểm soát quán tính cuộn.
+- **NEVER** thiết kế bố cục dạng Grid cứng nhắc (đặc biệt cho ảnh). **MUST** dùng `position: absolute` và phá vỡ đối xứng.
+- **NEVER** tạo hiệu ứng rập khuôn bằng CSS transition. **MUST** sử dụng GSAP cho mọi chuyển động và nội suy.
+- **NEVER** để UI Component quyết định nội dung. **MUST** render từ `weddingData`.
+- **NEVER** autoplay audio trực tiếp. **MUST** dùng The Wax Seal method (Chạm để mở khóa âm thanh).
+
+## 3. BA THỰC THỂ VĨNH CỬU (THE 3 ETERNAL ENTITIES)
+Các thực thể này không thuộc về bất kỳ Section cụ thể nào, chúng tồn tại xuyên suốt `layout.tsx` hoặc `page.tsx` cấp cao nhất.
+
+### 3.1. The Golden Thread (Sợi chỉ định mệnh)
+- **Kiến trúc:** Một lớp layer `<svg>` có `position: fixed` bao phủ toàn bộ màn hình, z-index nằm dưới nội dung nhưng trên màu nền.
+- **Ràng buộc:** Phải dùng GSAP ScrollTrigger + `stroke-dasharray` / `stroke-dashoffset` với `scrub: 1` để vẽ đường chỉ chạy theo tiến trình cuộn trang của người dùng.
+
+### 3.2. Color of Time (Màu của Thời gian)
+- **Kiến trúc:** Một thẻ `<div className="fixed inset-0 -z-10"></div>` nằm dưới cùng (z-index thấp nhất).
+- **Ràng buộc:** GSAP sẽ đọc thuộc tính `theme` (Mã màu HEX) từ `STORY_CHAPTERS` và sử dụng `gsap.to(backgroundColor)` để nội suy màu nền mỗi khi cuộn qua một mốc thời gian. Cả trang web sẽ chìm vào chuyển màu mượt mà.
+
+### 3.3. Floating Memory (Trôi nổi phi trọng lực)
+- **Kiến trúc:** Các thẻ `<img>` hoặc `<div>` được gán attribute `data-speed`.
+- **Ràng buộc:** Sử dụng GSAP ScrollTrigger đẩy trục Y. Ảnh to (gần) cuộn nhanh, ảnh nhỏ (xa) cuộn chậm, tạo ra chiều sâu không gian (Parallax Parallax) bồng bềnh mà không cần nạp Three.js.
+
+## 4. CHAPTER 0: THE WAX SEAL (MỞ MÀN ĐIỆN ẢNH)
+Giải bài toán Autoplay âm thanh bằng kỹ thuật tương tác.
+- **State 1:** Màn hình đen tối hoàn toàn, giữa màn hình có nút "Khẽ chạm để bắt đầu câu chuyện".
+- **Trigger:** `onClick`
+- **Action Sequence (GSAP Timeline):**
+  1. Play Audio (Âm lượng fade từ 0 -> 100%).
+  2. Nút biến mất (`opacity: 0`).
+  3. Text "Every love story begins..." fade in -> giữ 2s -> fade out.
+  4. Hero Image mờ ảo hiện lên, zoom in siêu chậm (`scale: 1` -> `1.15` trong 10 giây).
+  5. Handwriting signature xuất hiện.
+  6. Unlock scroll (Unpin) để người dùng cuộn xuống Chapter 1.

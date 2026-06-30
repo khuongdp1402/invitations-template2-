@@ -9,7 +9,7 @@ import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ColorBurstImage({ 
-  src = "/z7849785668787_545076eb7332d020812634ff21635017.jpg",
+  src = "/images/z7974179677199_aae30dafd89c8b5af79516e11e3569b1.jpg",
   alt = "Wedding Photo" 
 }) {
   const containerRef = useRef(null);

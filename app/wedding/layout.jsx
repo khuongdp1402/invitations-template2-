@@ -1,5 +1,4 @@
 import React from 'react';
-import AntiGravityCanvas from '@/components/canvas/AntiGravityCanvas';
 
 export const metadata = {
   title: 'Thiệp Cưới Khương & Hiền',
@@ -8,17 +7,10 @@ export const metadata = {
 
 export default function WeddingLayout({ children }) {
   return (
-    <div className="relative min-h-screen bg-[#FAF3F0]">
+    <div className="relative min-h-screen w-full bg-black overflow-hidden">
       {/* 
-        AntiGravityCanvas (z-0) 
-        Nó sẽ làm nền cho tất cả các trang con bên trong /wedding
-      */}
-      <AntiGravityCanvas />
-
-      {/* 
-        Container cho các trang con (z-10). 
-        Đảm bảo thẻ này đè lên trên Canvas để hiển thị chữ/hình.
-        Tuy Canvas có pointer-events-none, nhưng việc set z-index vẫn tốt để tránh lỗi DOM stacking.
+        Container chính cho trang thiệp
+        Không cần padding/margin vì các section sẽ tự lo
       */}
       <div className="relative z-10">
         {children}

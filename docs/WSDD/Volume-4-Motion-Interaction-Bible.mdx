@@ -1,0 +1,52 @@
+# VOLUME 4: Motion & Interaction Bible
+*(Từ điển Vật lý & Chuyển động - Chuẩn hóa GSAP)*
+
+## 1. MỤC TIÊU (OBJECTIVE)
+Chuẩn hóa toàn bộ logic, thời lượng, và đồ thị (easing) của mọi chuyển động trên website. Ngăn chặn sự "loạn nhịp" do mỗi Component dùng một tốc độ hay thư viện khác nhau.
+
+## 2. ĐỊNH NGHĨA EASING (MOTION DICTIONARY)
+- **MUST** sử dụng các Easing sau cho GSAP, **NEVER** dùng `linear` (trừ khi xoay đĩa nhạc).
+- `EASE_LUXURY`: `"power4.inOut"` (Chuyển cảnh, mở phong thư).
+- `EASE_FLOAT`: `"sine.inOut"` (Các vật thể trôi nổi nhẹ nhàng).
+- `EASE_SPRING`: `"back.out(1.7)"` (Khi nút bấm hoặc thẻ Card nảy ra).
+- `DURATION_SLOW`: `1.5` giây.
+- `DURATION_EPIC`: `10` giây (Cho Zoom Hero Image).
+
+## 3. CÔNG THỨC FLOATING MEMORY (PARALLAX)
+Để tạo ảo giác 3D bồng bềnh bằng 2D DOM, áp dụng thuật toán sau thông qua GSAP ScrollTrigger (Không dùng Three.js):
+
+- Các thẻ `<img>` phải có attribute `data-speed`.
+- Giá trị `data-speed` nằm trong khoảng **0.5 đến 1.5**.
+- Thuật toán GSAP:
+  ```javascript
+  gsap.utils.toArray('.floating-memory').forEach(memory => {
+    const speed = memory.getAttribute('data-speed');
+    const yValue = (1 - parseFloat(speed)) * 100; // Tính khoảng cách dịch chuyển
+    
+    gsap.to(memory, {
+      yPercent: yValue,
+      ease: "none",
+      scrollTrigger: {
+        trigger: memory.parentElement,
+        start: "top bottom", // Bắt đầu khi element cha chạm đáy màn hình
+        end: "bottom top", // Kết thúc khi cha vượt qua đỉnh
+        scrub: true // Khóa chặt với cuộn chuột
+      }
+    });
+  });
+  ```
+
+## 4. TRẠNG THÁI ENVELOPE RSVP (MÁY TRẠNG THÁI LỜI MỜI)
+Mô phỏng vật lý một chiếc phong thư thực tế (Sử dụng Framer Motion hoặc GSAP).
+
+- **State 1 (Đóng):**
+  - Nắp thư (`transform: rotateX(0deg)`).
+  - Thiệp bên trong nằm dưới thư (`z-index: 1`, `transform: translateY(0)`).
+- **State 2 (Mở nắp - Trigger by Hover/Click):**
+  - Nắp thư mở ra (`transform: rotateX(180deg)`), Origin tại `top`. Easing: `EASE_LUXURY`.
+- **State 3 (Rút thiệp):**
+  - Thiệp trượt lên trên (`transform: translateY(-80%)`).
+  - Swap z-index: Thiệp trượt lên và hiện đè lên trên nắp trước của phong bì.
+- **State 4 (Xác nhận - Submit):**
+  - Bắn Canvas Confetti.
+  - Phong thư từ từ trôi xuống hoặc mờ dần.

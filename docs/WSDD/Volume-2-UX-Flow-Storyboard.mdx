@@ -1,0 +1,36 @@
+# VOLUME 2: UX Flow & Storyboard
+*(Máy trạng thái Trục Y - Biến Kịch bản thành Toán học)*
+
+## 1. MỤC TIÊU (OBJECTIVE)
+Biến toàn bộ trải nghiệm kể chuyện (Storytelling) thành các điểm neo (Triggers) chính xác tuyệt đối dựa trên tỷ lệ phần trăm cuộn trang (Scroll Percentage). Tài liệu này yêu cầu AI cấu hình GSAP ScrollTrigger.
+
+## 2. QUY TẮC MÁY TRẠNG THÁI (STATE MACHINE RULES)
+- **MUST** sử dụng ScrollTrigger để kích hoạt animation.
+- **MUST** liên kết trạng thái màu nền (Color of Time) với các mốc Trigger này.
+- **NEVER** dùng `IntersectionObserver` thuần. GSAP ScrollTrigger là tiêu chuẩn duy nhất.
+
+## 3. ÁNH XẠ KỊCH BẢN (STORYBOARD MAPPING)
+
+| Scroll % | Chapter ID | Hành động GSAP (Actions) | Màu nền (Theme) |
+|----------|------------|---------------------------|-----------------|
+| **0%** | `chapter-0-hero` | Hero Image Pinned (`pin: true`). "The Wax Seal" đợi click để kích hoạt Audio và unlock scroll. Zoom chậm hình ảnh (`scale: 1.15`). | `#000000` (Đen) |
+| **0% - 15%** | `chapter-1-meet` | Unpin Hero. Sợi chỉ đỏ (Golden Thread) bắt đầu vẽ xuống. Dòng chữ "Ánh mắt chạm nhau..." xuất hiện với hiệu ứng Text Reveal (từng chữ mờ dần hiện lên). | `#FFF8F0` (Warm White) |
+| **15% - 30%** | `chapter-2-journey`| Sợi chỉ đỏ lượn vòng. Kích hoạt Floating Memories. Các ảnh có `data-speed` khác nhau bắt đầu trôi nổi bất đối xứng dọc trục Y. | `#FCE4EC` (Hồng nhạt) |
+| **30% - 45%** | `chapter-3-proposal`| GSAP ScrollTrigger Pin một bức ảnh chính giữa màn hình (Proposal). Background mờ đi. Text handwriting chạy ngang viền khung hình. | `#E3F2FD` (Xanh trời) |
+| **45% - 60%** | `chapter-4-family` | Hai cột Family Tree trôi lên từ 2 phía. Sợi chỉ đỏ tách làm 2 nhánh, bao quanh phần giới thiệu gia đình rồi nhập lại làm một. | `#F5F5DC` (Beige) |
+| **60% - 75%** | `chapter-5-timeline`| Trục dọc Timeline xuất hiện, sợi chỉ đỏ đè lên trục này. Khi cuộn tới đâu, chấm tròn tại điểm đó phát sáng (glow). | `#FFF8F0` |
+| **75% - 90%** | `chapter-6-rsvp` | Envelope (phong thư) xuất hiện giữa màn hình. Dừng cuộn (Pin) cho đến khi người dùng tương tác xong (hoặc cuộn qua nhanh). | `#FFFFFF` |
+| **90% - 100%**| `chapter-7-ending` | **Cinematic Ending**. Scroll tới cuối: Fade to Black. Nhạc nhỏ dần (fade out). Typewriter text: "Cảm ơn bạn...". Ảnh full-screen bật sáng + Pháo giấy (canvas-confetti rơi). | `#800020` (Burgundy) |
+
+## 4. TECHNICAL CONSTRAINTS CHO SCROLLTRIGGER
+```javascript
+// MUST follow this configuration pattern for sections:
+ScrollTrigger.create({
+  trigger: sectionRef.current,
+  start: "top center", // Khi đỉnh section tới giữa màn hình
+  end: "bottom center",
+  scrub: 1, // Momentum scrubbing
+  onEnter: () => gsap.to(bgRef.current, { backgroundColor: themeColor, duration: 1.5, ease: "power2.out" }),
+  onEnterBack: () => gsap.to(bgRef.current, { backgroundColor: themeColor, duration: 1.5, ease: "power2.out" })
+});
+```

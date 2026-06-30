@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { weddingData } from '@/config/weddingData';
 import { getDirectImageUrl } from '@/lib/utils/image';
 
-const IMG_URLS = weddingData.gallery || [];
+const IMG_URLS = weddingData.magicTouchGallery || weddingData.gallery || [];
 
 export default function MouseTrailGallerySection() {
   const containerRef = useRef(null);
